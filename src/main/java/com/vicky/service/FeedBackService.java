@@ -1,6 +1,5 @@
 package com.vicky.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -13,9 +12,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import com.sun.mail.smtp.SMTPTransport;
 import com.vicky.Repository.FeedBackRepository;
 import com.vicky.entity.FeedBackEntity;
 
@@ -30,7 +29,7 @@ public class FeedBackService {
 	FeedBackRepository feedBackRepository;
 	
 	public String feedbackdetails(String name, String mobileNo, String message) throws Exception {
-		//sendEMail();
+		
 		sendEmail(name,mobileNo,message);
 		return feedBackRepository.save(name,mobileNo,message);
 	}
@@ -57,7 +56,7 @@ public class FeedBackService {
        
     }
    
-   
+   @Async
     public void sendEmail(String name, String mobileNo, String msg){   
         try {
             Session session = getEmailSession();

@@ -29,7 +29,7 @@ public class FeedBackRepository {
 	public String save(String name, String mobileNo, String message) throws Exception {
 		String result = "-1";
 		 StringBuilder sql = new StringBuilder();
-	      sql.append("INSERT INTO jalajfeedback VALUES ('").append(name).append("','")
+	      sql.append("INSERT INTO jalajfeedback (name,mobileNo,message) VALUES ('").append(name).append("','")
 	      .append(mobileNo).append("','")
 	      .append(message).append("')");
 	      Connection conn = null;
@@ -53,7 +53,7 @@ public class FeedBackRepository {
 	
 	public List<FeedBackEntity> fetchAllDetails() throws Exception {
 		
-		 String sql = "select name,mobileNo,message from jalajfeedback";
+		 String sql = "select id,name,mobileNo,message from jalajfeedback";
 		 List<FeedBackEntity> list = new ArrayList<>();
 		 Connection conn= null;
 		 Statement stmt = null;
@@ -65,7 +65,7 @@ public class FeedBackRepository {
 	      
 	      FeedBackEntity fbe;
 	      while(rs.next()){
-	    	  fbe = new FeedBackEntity(rs.getString("name"),rs.getString("mobileNo"),rs.getString("message"));
+	    	  fbe = new FeedBackEntity(rs.getInt("id"),rs.getString("name"),rs.getString("mobileNo"),rs.getString("message"));
 	    	  list.add(fbe);
 	      }
 		}
