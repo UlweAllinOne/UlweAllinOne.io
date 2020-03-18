@@ -59,8 +59,7 @@
             </section>
         </header>
         
-        <img src="img/ParkingLayout.jpg" alt="" style="margin-bottom: 22px;">
-
+		<img class="NO-CACHE" data-src="img/ParkingLayout.jpg" alt="" style="margin-bottom: 22px;">
 
         <div class="clear"></div>
 
@@ -89,7 +88,12 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/active.js"></script>
-
+	<script> 
+        $(document).ready(function () 
+            {
+            $('.NO-CACHE').attr('src', function () { return $(this).attr('data-src') + "?a=" + Math.random() });
+            });
+    </script>
     
 </body>
 
