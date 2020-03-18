@@ -10,21 +10,12 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.vicky.entity.FeedBackEntity;
+import com.vicky.util.ConnectionUtil;
 
 @Repository
 public class FeedBackRepository {
 	
-	private Connection getConnection(){
-		
-		try{
-			 Class.forName("com.mysql.jdbc.Driver");
-		      return DriverManager.getConnection("jdbc:mysql://localhost:3306/mahesh_gym", "root", "MaheshGym@2019");
-		 	}
-			catch(Exception e){
-				
-			}
-		return null;
-	}
+	
 
 	public String save(String name, String mobileNo, String message) throws Exception {
 		String result = "-1";
@@ -35,7 +26,7 @@ public class FeedBackRepository {
 	      Connection conn = null;
 	      Statement stmt = null;
 		try{			
-	      conn = getConnection();
+	      conn = ConnectionUtil.getConnection();
 	      stmt = conn.createStatement();
 	      int res = stmt.executeUpdate(sql.toString());
 	      result = res+"";
@@ -59,7 +50,7 @@ public class FeedBackRepository {
 		 Statement stmt = null;
 		 ResultSet rs = null;
 		try{			
-	      conn = getConnection();
+	      conn = ConnectionUtil.getConnection();
 	      stmt = conn.createStatement();
 	      rs = stmt.executeQuery(sql);
 	      

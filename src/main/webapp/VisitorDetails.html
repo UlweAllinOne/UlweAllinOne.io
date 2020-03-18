@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Siddhivinayak Platinum</title>
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet"> 
+   
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="shortcut icon" href="img/logo1.jpg" type="image/x-icon">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <section class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <div class="contact">
+                                <p><span class="phone"><a href="#">Phone: 9820684534</a></span><span class="email"><a href="#">Email: jalaj.purohit@gmail.com</a></span></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="header-bottom borderstyle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12 col-xs-12">
+                            <a href="#">
+                                <div class="main-logo">
+                                    <!--<img src="img/logo.png" alt="">-->
+                                    <h2>Siddhivinayak Platinum</h2>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-7 col-sm-12 col-xs-12">
+                            <div class="menu">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="index.html">HOME </a></li>
+                                    <li> <a href="WaterFine.html">Water Fine</a></li>
+                                    <li><a href="Holi2020.html">Festival & Celebrations</a></li>
+                                    <li><a href="CarParkingLayout.html">Car Parking</a></li>
+                                    <li class="activeHeader"><a href="ContactForm.html">Feedback\Suggestions</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
+
+        <div class="container">
+            <form id="contact" action="" method="post">
+                <h3 style="color:darkgreen"> Visitor Details </h3>
+				<table class="table table-striped table-bordered table-hover" id="visitorDetailsTable">
+                          <thead>
+                            <th>Sr No.</th>
+                            <th>Flat No</th>
+                            <th>Mobile No</th>
+                            <th>Comment</th>
+                            <th>Date Time</th>
+                            <th>Image</th>
+                            </thead>
+                            <tbody>   
+                            </tbody>       
+                        </table>
+               
+
+            </form>
+        </div>
+
+
+        <div class="clear"></div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-8">
+                        <div class="footer-text one">
+                            <h3>CONTACT US</h3>
+                            <ul>
+                                <li><a href="#"><i class="material-icons">location_on</i>Sector 23, Plot Number 142, ULWE, Navi Mumbai</a></li>
+                                <li><a href="#"><i class="material-icons">email</i>jalaj.purohit@gmail.com</a></li>
+                                <li><a href="#"><i class="material-icons">call</i>9820684534</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <p>Copyright@2020 <a href="#">Jalaj Rajpurohit</a> All Rights Reserved</p>
+            </div>
+        </footer>
+    </div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/animationCounter.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/active.js"></script>
+    <script> 
+    $(document).ready(function() {    	   
+    	   $.ajax({
+    		      type: 'GET',
+    		      url: "visitordetailsFetch",
+    		      success: function (response1) {
+    		    	  $.each(response1, function(key,response) {   
+		    		    	  var imgkey = '"visit'+$(response).attr("id")+'"';
+		    		    	  var imgkeyDiv = 'visit'+$(response).attr("id");
+		    		    	  var newRow = "<tr><td>"+$(response).attr("id")+"</td><td>"+$(response).attr("flatno")+"</td>"+
+		    	                "<td>"+$(response).attr("phoneno")+"</td><td>"+$(response).attr("comment")+"</td><td>"+$(response).attr("datetime")+"</td><td>"+
+		    	                "<input type='button' value='Photo' class='btn btn-primary btn-xs' onClick='return fetchVisitorImageDetails("+$(response).attr("id")+","+imgkey+")' >&nbsp;&nbsp;"+
+		    	                "<input type='button' value='hide' style='display:none;' class='btn btn-primary btn-xs' id='button"+imgkeyDiv+"' onClick='return hideImageDetails("+imgkey+")' >"+
+		    	                "<div class="+imgkey+" style='display:none;'><img id='great-image' style=''></div></td></tr>";
+		    	            $("#visitorDetailsTable tbody").append(newRow);
+		
+		    		    	  });
+    		            },
+    		      error : function (response) {        
+    		            alert("Server Error " + response.responseText+". Please contact Jalaj Purohit (9820684534)");   
+    		            }
+    		    });
+    	   
+       });
+    
+    function fetchVisitorImageDetails(visitorid,divClass){
+        $("."+divClass).append('<i class="fa fa-refresh fa-spin " style="font-size: 81px;color: #2e6da4;"></i>');
+        $("."+divClass).find('#great-image').attr('src','data:image/png;base64,');
+        $.ajax({
+            type: "POST",
+            url: "download",
+            data: "visitorid="+visitorid,
+            success: function (data) {
+                $("."+divClass).find('.fa-refresh').remove();
+                $("."+divClass).find('#great-image').attr('src','data:image/png;base64,'+data);  
+                $("."+divClass).show();
+                $("#button"+divClass).show();
+            },
+            error: function (e) {
+                alert(e);
+            }
+        });
+    }
+    function hideImageDetails(divClass){
+    	 $("."+divClass).hide();
+    	 $("#button"+divClass).hide();
+    }
+    
+    
+    </script>
+
+</body>
+
+</html>
