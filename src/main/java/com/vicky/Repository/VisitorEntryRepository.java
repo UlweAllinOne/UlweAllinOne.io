@@ -80,7 +80,7 @@ public class VisitorEntryRepository {
 	
 	public List<VisitorEntity> fetchVisitorDetails() throws Exception {
 		
-		 String sql = "select id,flatno,phoneno,comment,datetime from jalajvisitor";
+		 String sql = "select id,flatno,phoneno,comment,datetime from jalajvisitor order by id desc";
 		 List<VisitorEntity> list = new ArrayList<>();
 		 Connection conn= null;
 		 Statement stmt = null;
