@@ -59,39 +59,44 @@
             </section>
         </header>
         
-		<img id="myid" class="NO-CACHE"  data-src="img/ParkingLayout.jpg" alt="" border = "0" usemap = "#html" style="margin-bottom: 22px;">
+		
+		<!-- <img id="myid" class="NO-CACHE" data-src="img/ParkingLayout.jpg" alt="" border = "0" usemap = "#html" style="margin-bottom: 22px;"> -->
+		
+		<img id="myid" class="NO-CACHE" data-src="img/ParkingLayout.jpg" alt="" border = "0" usemap = "#html" style="margin-bottom: 22px;">
 
       <map name = "html">
-         <area shape = "rect"  coords="90,90,170,110" onclick="GetParkingInfo('D-712, Jalaj Purohit, | P-27 | ')" href="#" >
+         <area shape = "rect" coords="90,90,170,110" onclick="GetParkingInfo('D-712, Jalaj Purohit, | P-27 | ')" href="#" >
         
         <area shape = "rect"  coords="690,50,730,70" onclick="GetParkingInfo('B-305, Santram Khavase, | P-01 | ')" href="#" >
         
         <area shape = "rect"  coords="650,50,690,70" onclick="GetParkingInfo('A-302, Narayan Chavan, | P-02 | ')" href="#" >
         
-        <area shape = "rect"  coords="610,50,650,70" onclick="GetParkingInfo('A-105, Sanjay Murudkar, | P-03 | ')" href="#" >
+        <area shape = "rect"  coords="610,50,650,70" onclick="GetParkingInfo('B-105, Sanjay Murudkar, | P-03 | ')" href="#" >
         
         <area shape = "rect"  coords="530,70,570,90" onclick="GetParkingInfo('A-401, Ramesh Sonawane, | P-07 | ')" href="#" >
         
         <area shape = "rect"  coords="330,50,370,70" onclick="GetParkingInfo('D-311, Agney Purohit, | P-14 | ')" href="#" >
         
-        <area shape = "rect"  coords="290,70,330,90" onclick="GetParkingInfo('A-512, Gautam Pagare, | P-18 | ')" href="#" >
+        <area shape = "rect"  coords="290,70,330,90" onclick="GetParkingInfo('D-512, Gautam Pagare, | P-18 | ')" href="#" >
         
         <area shape = "rect"  coords="210,50,250,70" onclick="GetParkingInfo('D-312, Shailesh Borkar, | P-22 | ')" href="#" >
         
         <area shape = "rect"  coords="130,50,170,90" onclick="GetParkingInfo('C-408, Sanjay Borse, | P-25 | ')" href="#" >
         
-        <area shape = "rect"  coords="90,50,130,90" onclick="GetParkingInfo('D-111, Prajwal Jamkhandikar, | P-26 | ')" href="#" >
+        <area shape = "rect"  coords="90,50,130,90"  onclick="GetParkingInfo('D-111, Prajwal Jamkhandikar, | P-26 | ')" href="#" >
         
-        <area shape = "rect"  coords="90,130,130,150" onclick="GetParkingInfo('C-608, Jitendra Misra, | P-29 | ')" href="#" >
+        <area shape = "rect"  coords="90,130,130,150" onclick="GetParkingInfo('C-608, Mr. Misra, | P-29 | ')" href="#" >
         
         <area shape = "rect"  coords="610,10,650,30" onclick="GetParkingInfo('A-303, Mohan Koli, | P-42 | ')" href="#" >
+        
+        <area shape = "rect"  coords="370,10,410,30" onclick="GetParkingInfo('A-103, Arun Kamble, | P-45 | ')" href="#" >
         
         <area shape = "rect"  coords="10,30,50,50" onclick="GetParkingInfo('D-710, Deepak Veer, | P-51 | ')" href="#" >
         
         <area shape = "rect"  coords="10,110,50,130" onclick="GetParkingInfo('B-604, Sudhir Vanarase, | P-53 | ')" href="#" >
         
         <area shape = "rect"  coords="10,150,50,170" onclick="GetParkingInfo('C-707, Subbaraman Iyer, | P-54 | ')" href="#" >
-        
+    
           
       </map>
       
@@ -122,21 +127,23 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/active.js"></script>
-    <script src="node_modules/bootpopup/bootpopup.min.js"></script>
+    <script src="js/bootpopup.js"></script> 
+	
 	<script> 
         $(document).ready(function () 
             {
             $('.NO-CACHE').attr('src', function () { return $(this).attr('data-src') + "?a=" + Math.random() });
-            });
-    </script>
-      <script>
-         var myVal = document.getElementById("myid").useMap;
-         document.write("<br>Usemap value: "+myVal);
-         function GetParkingInfo(value){
-              alert('Parking alloted to -  '+value); 
-             return false;
-         }
-      </script>
+            
+   	});
+   	
+    var myVal = document.getElementById("myid").useMap;
+    document.write("<br>Usemap value: "+myVal);
+    function GetParkingInfo(value){
+           /* alert('Parking alloted to -  '+value) ; */
+          bootpopup.alert("Parking alloted to :  "  + value ,"Siddhivinayak Platinum");
+    return false;
+    }
+ </script>
 </body>
 
 </html>
