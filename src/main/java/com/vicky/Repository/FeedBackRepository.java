@@ -44,7 +44,7 @@ public class FeedBackRepository {
 	
 	public List<FeedBackEntity> fetchAllDetails() throws Exception {
 		
-		 String sql = "select id,name,mobileNo,message from jalajfeedback";
+		 String sql = "select id,name,mobileNo,message from jalajfeedback order by id desc";
 		 List<FeedBackEntity> list = new ArrayList<>();
 		 Connection conn= null;
 		 Statement stmt = null;
