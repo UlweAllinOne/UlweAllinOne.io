@@ -184,10 +184,11 @@
                                 img = $("#great-image").attr('src').split(',')[1];
                 }
 
-    	   
+                var contextPath = "http://ec2-13-233-25-151.ap-south-1.compute.amazonaws.com:8080/MaheshGym/";
     	   $.ajax({
     		      type: 'POST',
-    		      url: "addVisitorData",
+    		      /* url: "addVisitorData", */
+    		      url: contextPath + "addVisitorData",
     		     data: 'flatno='+$("#flatNumberName").val()+'&phoneno='+$("#phoneNO").val()+'&comment='+$("#message").val()+'&uploadFile='+img,
     		    
     		      success: function (response) {

@@ -107,10 +107,13 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/active.js"></script>
     <script> 
+    var contextPath = "http://ec2-13-233-25-151.ap-south-1.compute.amazonaws.com:8080/MaheshGym/";
+    
     $(document).ready(function() {    	   
     	   $.ajax({
     		      type: 'GET',
-    		      url: "visitordetailsFetch",
+    		      /* url: "visitordetailsFetch", */
+    		     url: contextPath + "visitordetailsFetch",
     		      success: function (response1) {
     		    	  $.each(response1, function(key,response) {   
 		    		    	  var imgkey = '"visit'+$(response).attr("id")+'"';
@@ -131,12 +134,15 @@
     	   
        });
     
+    
+    
     function fetchVisitorImageDetails(visitorid,divClass){
         $("."+divClass).append('<i class="fa fa-refresh fa-spin " style="font-size: 81px;color: #2e6da4;"></i>');
         $("."+divClass).find('#great-image').attr('src','data:image/png;base64,');
         $.ajax({
             type: "POST",
-            url: "download",
+            /* url: "download", */
+            url: contextPath + "downloadImage",
             data: "visitorid="+visitorid,
             success: function (data) {
                 $("."+divClass).find('.fa-refresh').remove();

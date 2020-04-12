@@ -96,6 +96,9 @@
                 </div>
             </div>
         </div>-->
+        
+        <img class="NO-CACHE" data-src="img/WaterTiming.jpg" alt="" style="margin-bottom: 22px;">
+        
 		<section class="our_activity">
 			<div class="container">
 				<div class="row">
@@ -109,7 +112,7 @@
 								<a href="#">Information !!!</a>
 							</h2>
 							<p>
-								* Water Supply Timing:
+								* Water Supply Status :
 								<script>
 									document.write(new Date()
 											.toLocaleDateString());
@@ -125,8 +128,8 @@
 								<!--  Evening 2 Half water Tank (Around 7:00 PM To 8:00 PM)  -->
 							</p>
 
-							<p>Morning 2 Full water Tank (Water supply start timing 7:00 AM).</p>
-							<p>Evening 2 Half water Tank (Water supply start timing 7:00 PM).</p>
+							<p>Morning 2 Full water Tank.</p>
+							<p>Evening 2 Half water Tank .</p>
 
 							
 							<p style="color: red">* The evening water supply shall be
@@ -258,7 +261,12 @@
 			});
 		});
 	</script>
-
+	<script> 
+        $(document).ready(function () 
+            {
+            $('.NO-CACHE').attr('src', function () { return $(this).attr('data-src') + "?a=" + Math.random() });
+            });
+    </script>
 </body>
 
 </html>
