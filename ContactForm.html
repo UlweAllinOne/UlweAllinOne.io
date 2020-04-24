@@ -7,7 +7,7 @@
     <title>Siddhivinayak Platinum</title>
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet"> 
    
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -47,7 +47,8 @@
                         <div class="col-md-7 col-sm-12 col-xs-12">
                             <div class="menu">
                                 <ul class="nav navbar-nav">
-                                    <li class="activeHeader"><a href="VisitorEntry.html">Visitor Entry</a></li>
+                                    <li><a href="index.html">HOME </a></li>
+                                    <li class="activeHeader"><a href="ContactForm.html">Feedback\Suggestions</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -58,38 +59,24 @@
 
         <div class="container">
             <form id="contact" action="" method="post">
-                <h3 style="color:darkgreen"> Visitor Entry </h3>
+                <h3 style="color:darkgreen"> Contact \ Feedback \ Suggestions Details </h3>
 
                 <fieldset>
-                    <label for="flatNumberName">Visitor want to meet at flat Number (For others - 999):</label>
-                    <input id="flatNumberName" placeholder="Flat Number (For others - 999)." maxlength=3 class="form-control" type="text" cols="50" tabindex="1" style="margin-bottom: 10px" required autofocus>
-                </fieldset>
-
-                <fieldset>
-                    <label for="phonenumber">Visitor Phone Number:</label>
-                    <input id="phoneNO" placeholder="Visitor Phone Number" maxlength=10 class="form-control" aria-describedby="phonenumberHelp" type="tel" rows="1" cols="50" tabindex="2" required>
-				<!--<small id="phonenumberHelp" class="form-text text-muted" >We'll never share your phone number with anyone else.</small> -->
+                    <label for="flatNumberName">Your Flat Number & Name</label>
+                    <input id="flatNumberName" placeholder="Your Flat Number & Name" maxlength=50 class="form-control" type="text" cols="50" tabindex="1" style="margin-bottom: 10px" required autofocus>
                 </fieldset>
 
                 <fieldset>
-                    <label for="message">Any Comments: </label>
-                    <textarea id="message" placeholder="Type your message here...." maxlength=1000 class="form-control" rows="2" cols="50" tabindex="3" style="margin-bottom: 10px"></textarea>
+                    <label for="phonenumber">Your Phone Number</label>
+                    <input id="phoneNO" placeholder="Your Phone Number" maxlength=10 class="form-control" aria-describedby="phonenumberHelp" type="tel" rows="1" cols="50" tabindex="2" required>
+                    <small id="phonenumberHelp" class="form-text text-muted" >We'll never share your phone number with anyone else.</small>
                 </fieldset>
 
-  				<fieldset>
-                    <label for="uploadFile">Take\Open Visitor Photo: </label>
-                    <input type="file" id="uploadFile" class="form-control" tabindex="4" style="margin-bottom: 10px">
-                </fieldset>
-                
                 <fieldset>
-                        <img id="original-image" width="500px" style="display:none">
-                          <div class="image-sec">
-                                <img id="great-image" style="margin-bottom: 10px">
-                          </div>
+                    <label for="message">Your Feedback \ Suggestions </label>
+                    <textarea id="message" placeholder="Type your message here...." maxlength=1000 class="form-control" rows="4" cols="50" tabindex="3" style="margin-bottom: 10px" required></textarea>
                 </fieldset>
-                
-                
-                
+
                 <fieldset>
                     <button name="submit" type="submit"  onclick="return submitData()" class="btn btn-primary btn-block" id="contact-submit" data-submit="...Sending" style="margin-bottom: 22px" >Submit</button>
                 </fieldset>
@@ -127,44 +114,9 @@
     <script src="js/active.js"></script>
     <script src="js/contextPath.js"></script>
     <script> 
-    var input = document.getElementById("uploadFile");
-    input.onchange = function() {
-                                document.getElementById('great-image').src = '';
-                                $(".image-sec").append('<i class="fa fa-refresh fa-spin" style="font-size: 81px;color: #2e6da4;"></i>')
-                                setTimeout(resizeImageToSpecificWidth,200);
-    };
-
-    function resizeImageToSpecificWidth() {
-        var width = 300;
-		if (input.files && input.files[0]) {
-		var reader = new FileReader();
-		reader.onload = function(event) {
-		var img = new Image();
-		img.onload = function() {
-		if (img.width > width) {
-		var oc = document.createElement('canvas'), octx = oc.getContext('2d');
-		oc.width = img.width;
-		oc.height = img.height;
-		octx.drawImage(img, 0, 0);
-		while (oc.width * 0.5 > width) {
-		    oc.width *= 0.5;
-		    oc.height *= 0.5;
-		    octx.drawImage(oc, 0, 0, oc.width, oc.height);
-		}
-		oc.width = width;
-		oc.height = oc.width * img.height / img.width;
-		octx.drawImage(img, 0, 0, oc.width, oc.height);
-		                                                                        $(".fa-refresh").remove();
-		document.getElementById('great-image').src = oc.toDataURL();
-		}
-		};
-		document.getElementById('original-image').src = event.target.result;
-		img.src = event.target.result;
-		};
-		reader.readAsDataURL(input.files[0]);
-		}
- }
-
+    var contextPath = postContextPath
+    
+    
        function submitData(){    	   
     	   //if($("#flatNumberName").val() == '' || $("#phoneNO").val() == '' || $("#message").val() == ''){
     		 if($("#flatNumberName").val() == '' ){
@@ -177,27 +129,29 @@
       		 $("#phoneNO").focus()
       		   return false;
       	   	}
-    		
+    		 if($("#message").val() == '' ){
+        		   alert('Please enter Feedback / Suggestions.');
+        		   $("#message").focus()
+        		   return false;
+        	   }
     		 //else{
-    			 
-    			 var img = "";
-                if($("#great-image").attr('src') != undefined && $("#great-image").attr('src') != ""){
-                                img = $("#great-image").attr('src').split(',')[1];
-                }
-
-                var contextPath = contextFullPath
+    	   
     	   $.ajax({
     		      type: 'POST',
-    		      /* url: "addVisitorData", */
-    		      url: contextPath + "addVisitorData",
-    		     data: 'flatno='+$("#flatNumberName").val()+'&phoneno='+$("#phoneNO").val()+'&comment='+$("#message").val()+'&uploadFile='+img,
+    		      /* url: "feedbackdetailsSave", */
+    		      url: contextPath + "feedbackdetailsSave",
+    		     data: 'name='+$("#flatNumberName").val()+'&mobileNo='+$("#phoneNO").val()+'&message='+$("#message").val(),
     		    
     		      success: function (response) {
+							response=response.message;
+
     		          //  $('#lodaingModal').modal('hide');
     		            alert("Thanks for your Feedback\Suggestion.");
     		            location.reload();
     		            },
     		      error : function (response) {        
+							response=response.message;
+							response=JSON.parse(response);
     		            alert("Server Error " + response.responseText+". Please contact Jalaj Purohit (9820684534)");   
     		            }
     		    });
@@ -205,18 +159,6 @@
     	  return false;
        }
     </script>
-
-
-<script type="text/javascript">
-
-$(document).ready(function () {
-    $(".submit").click(function () {
-        $(".submit").attr("disabled", true);
-        return true;
-    });
-});
-
-</script>
 
 </body>
 
