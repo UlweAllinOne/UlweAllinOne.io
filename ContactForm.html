@@ -62,8 +62,8 @@
                 <h3 style="color:darkblue"> Contact \ Feedback \ Suggestions Details </h3>
 
                 <fieldset>
-                    <label for="flatNumberName">Your Flat Number & Name</label>
-                    <input id="flatNumberName" placeholder="Your Flat Number & Name" maxlength=50 class="form-control" type="text" cols="50" tabindex="1" style="margin-bottom: 10px" required autofocus>
+                    <label for="Name">Your Name</label>
+                    <input id="Name" placeholder="Your Name" maxlength=50 class="form-control" type="text" cols="50" tabindex="1" style="margin-bottom: 10px" required autofocus>
                 </fieldset>
 
                 <fieldset>
@@ -119,9 +119,9 @@
     
        function submitData(){    	   
     	   //if($("#flatNumberName").val() == '' || $("#phoneNO").val() == '' || $("#message").val() == ''){
-    		 if($("#flatNumberName").val() == '' ){
-    		   alert('Please enter Flat Number / Name details.');
-    		   $("#flatNumberName").focus()
+    		 if($("#Name").val() == '' ){
+    		   alert('Please enter Name details.');
+    		   $("#Name").focus()
     		   return false;
     	   	}
     		 if($("#phoneNO").val() == '' ){
@@ -140,7 +140,7 @@
     		      type: 'POST',
     		      /* url: "feedbackdetailsSave", */
     		      url: contextPath + "feedbackdetailsSave",
-    		     data: 'name='+$("#flatNumberName").val()+'&mobileNo='+$("#phoneNO").val()+'&message='+$("#message").val(),
+    		     data: 'name='+$("#Name").val()+'&mobileNo='+$("#phoneNO").val()+'&message='+$("#message").val(),
     		    
     		      success: function (response) {
 							response=response.message;
