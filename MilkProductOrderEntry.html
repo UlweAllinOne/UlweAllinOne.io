@@ -176,20 +176,20 @@
     	   $.ajax({
     		      type: 'POST',
     		      
-    		      url: contextPath + "addVisitorData",
-    		     data: 'flatno='+$("#flatNumberName").val()+'&phoneno='+$("#phoneNO").val()+'&comment='+$("#message").val()+'&uploadFile='+img,
+    		      url: contextPath + "addMilkProductOrderData",
+    		     data: 'ProductName='+$("#ProductName").val()+'&MilkType='+$("#MilkType").val()+'&MilkQuantity='+$("#MilkQuantity").val()+'&MilkStartDate='+MilkStartDate+'&MilkEndDate='+MilkEndDate+'&MilkBrand='+MilkBrand+'&Quantity='+Quantity+'&Price='+Price,
     		    
     		      success: function (response) {
 							response=response.message;
 
     		          //  $('#lodaingModal').modal('hide');
-    		            alert("Thanks for your Feedback\Suggestion.");
+    		            alert("Thanks for your Order.");
     		            location.reload();
     		            },
     		      error : function (response) {        
 							response=response.message;
 							response=JSON.parse(response);
-    		            alert("Server Error " + response.responseText+". Please contact Jalaj Purohit (9820684534)");   
+    		            alert("Server Error " + response.responseText+". Please contact (9820684534)");   
     		            }
     		    });
     	   //}
