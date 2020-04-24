@@ -37,6 +37,11 @@
     border-radius: 4px;
 }
 
+.grid-container {
+  display: grid;
+  grid-auto-flow: row dense;
+}
+
 .elementstyle {
     margin-top: -20px;
     /*z-index:-1*/

@@ -59,50 +59,64 @@
             </section>
         </header>
 
+
         <div class="container">
             <form id="contact" action="" method="post">
                 <h3 style="color:darkblue"> Select Product </h3>
 
-                <fieldset>
-                    <label for="ProductName">Select Product from below list:</label>
-                    <select id="ProductName" name="ProductName">
-					  <option value="Milk">Milk</option>
-					  <option value="Curd">Dahi (Curd)</option>
-					  <option value="Bread">Bread</option>
-					</select>
+			<div class="grid-item">
+				<div class="grid-item">
+	                <fieldset>
+	                <div class="grid-item">
+	                    <label for="ProductName" style="color:darkblue">Select Product from below list:</label>
+	                    </div>
+	                    <div class="grid-item">
+	                    <select id="ProductName" name="ProductName">
+						  <option value="Milk">Milk</option>
+						  <option value="Curd">Dahi (Curd)</option>
+						  <option value="Bread">Bread</option>
+						</select>
+						</div>
+	                </fieldset>
+				</div>
+				<div class="grid-item">
+					<fieldset>
+					   <div class="grid-item">
+							<label for="MilkType" style="color:darkblue">Milk Type:</label>
+		                    <select id="Quantity" name="Quantity">
+							  <option value="Cow">Cow</option>
+							  <option value="Buffalo">Buffalo </option>
+							</select>
+						</div>
+				   <div class="grid-item">
+	                    <label for="MilkQuantity" style="color:darkblue">Milk Quantity:</label>
+	                    <select id="MilkQuantity" name="MilkQuantity">
+						  <option value="1">1/2 Litre</option>
+						  <option value="2">1 Litre </option>
+						  <option value="3">2 Litre</option>
+						</select>
+					</div>
+					   
+					<div class="grid-item">
+						<label for="MilkStartDate" style="color:darkblue">Milk Start Date:</label>
+						<input type="date" id="MilkStartDate" name="MilkStartDate">
+						
+						<label for="MilkEndDate" style="color:darkblue">Milk End Date:</label>
+						<input type="date" id="MilkEndDate" name="MilkEndDate">
+					</div>
+					<div class="grid-item">
+						<label for="MilkBrand" style="color:darkblue">Milk Brand:</label>
+	                    <select id="MilkBrand" name="MilkBrand">
+						  <option value="Amul">Amul</option>
+						  <option value="MotherDairy">MotherDairy </option>
+						  <option value="Other">Other</option>
+						</select>
+					</div>
+					
                 </fieldset>
-
-				<fieldset>
-					<label for="MilkType">Milk Type:</label>
-                    <select id="Quantity" name="Quantity">
-					  <option value="Cow">Cow</option>
-					  <option value="Buffalo">Buffalo </option>
-					</select>
-					
-                    <label for="MilkQuantity">Milk Quantity:</label>
-                    <select id="MilkQuantity" name="MilkQuantity">
-					  <option value="1">1/2 Litre</option>
-					  <option value="2">1 Litre </option>
-					  <option value="3">2 Litre</option>
-					</select>
-					
-					<label for="MilkStartDate">Milk Start Date:</label>
-					<input type="date" id="MilkStartDate" name="MilkStartDate">
-					
-					<label for="MilkEndDate">Milk End Date:</label>
-					<input type="date" id="MilkEndDate" name="MilkEndDate">
-					
-					<label for="MilkBrand">Milk Brand:</label>
-                    <select id="MilkBrand" name="MilkBrand">
-					  <option value="Amul">Amul</option>
-					  <option value="MotherDairy">MotherDairy </option>
-					  <option value="Other">Other</option>
-					</select>
-					
-                </fieldset>
-                
+                </div>
                 <fieldset>
-                    <label for="Quantity">Quantity:</label>
+                    <label for="Quantity" style="color:darkblue">Quantity:</label>
                     <select id="Quantity" name="Quantity">
 					  <option value="1">1</option>
 					  <option value="2">2 </option>
@@ -112,17 +126,15 @@
 
                
                 <fieldset>
-                    <label for="Price">Price:</label>
+                    <label for="Price" style="color:darkblue">Price:</label>
                     <input type="text" id="Price" name="Price">
                 </fieldset>
                
                 
-                
-                
                 <fieldset>
                     <button name="submit" type="submit"  onclick="return submitData()" class="btn btn-primary btn-block" id="contact-submit" data-submit="...Sending" style="margin-bottom: 22px" >Submit</button>
                 </fieldset>
-
+				</div>
             </form>
         </div>
 
@@ -145,7 +157,7 @@
                 </div>
             </div>
             <div class="footer_bottom">
-                <p>Copyright@2020 <a href="#">Jalaj Rajpurohit</a> All Rights Reserved</p>
+                <p>Copyright@2020 <a href="#">UlweAllinOne</a> All Rights Reserved</p>
             </div>
         </footer>
     </div>
@@ -157,19 +169,6 @@
     <script src="js/contextPath.js"></script>
   
        function submitData(){    	   
-    	   //if($("#flatNumberName").val() == '' || $("#phoneNO").val() == '' || $("#message").val() == ''){
-    		 if($("#flatNumberName").val() == '' ){
-    		   alert('Please enter Flat Number / Name details.');
-    		   $("#flatNumberName").focus()
-    		   return false;
-    	   	}
-    		 if($("#phoneNO").val() == '' ){
-      		   alert('Please enter Phone / Mobile Number.');
-      		 $("#phoneNO").focus()
-      		   return false;
-      	   	}
-    		
-    		
 
                 var contextPath = postContextPath
     	   $.ajax({
