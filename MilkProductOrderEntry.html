@@ -177,7 +177,7 @@
     		      type: 'POST',
     		      
     		      url: contextPath + "addMilkProductOrderData",
-    		     data: 'ProductName='+$("#ProductName").val()+'&MilkType='+$("#MilkType").val()+'&MilkQuantity='+$("#MilkQuantity").val()+'&MilkStartDate='+MilkStartDate+'&MilkEndDate='+MilkEndDate+'&MilkBrand='+MilkBrand+'&Quantity='+Quantity+'&Price='+Price,
+    		     data: 'UserName='+$("#UserName").val()+ProductName='+$("#ProductName").val()+'&MilkType='+$("#MilkType").val()+'&MilkQuantity='+$("#MilkQuantity").val()+'&MilkStartDate='+MilkStartDate+'&MilkEndDate='+MilkEndDate+'&MilkBrand='+MilkBrand+'&Quantity='+Quantity+'&Price='+Price,
     		    
     		      success: function (response) {
 							response=response.message;
