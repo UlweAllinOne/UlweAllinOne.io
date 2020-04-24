@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Siddhivinayak Platinum</title>
+    <title>UlweAllinOne</title>
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">  
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
-    <link rel="shortcut icon" href="img/logo1.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -40,14 +40,17 @@
                             <a href="#">
                                 <div class="main-logo">
                                     <!--<img src="img/logo.png" alt="">-->
-                                    <h2>Siddhivinayak Platinum</h2>
+                                    <h2>Ulwe All in One</h2>
                                 </div>
                             </a>
                         </div>
                         <div class="col-md-7 col-sm-12 col-xs-12">
                             <div class="menu">
                                 <ul class="nav navbar-nav">
-                                    <li class="activeHeader"><a href="VisitorEntry.html">Visitor Entry</a></li>
+                                	<li><a href="index.html">HOME </a></li>
+                                    <li class="activeHeader"><a href="MilkProductOrderEntry.html">Milk Product</a></li>
+                                    <li><a href="MilkProductViewCancle.html">View / Cancel Order</a></li>
+                                    <li><a href="ContactForm.html">Feedback\Suggestions</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -58,35 +61,62 @@
 
         <div class="container">
             <form id="contact" action="" method="post">
-                <h3 style="color:darkgreen"> Visitor Entry </h3>
+                <h3 style="color:darkblue"> Select Product </h3>
 
                 <fieldset>
-                    <label for="flatNumberName">Visitor want to meet at flat Number (For others - 999):</label>
-                    <input id="flatNumberName" placeholder="Flat Number (For others - 999)." maxlength=3 class="form-control" type="text" cols="50" tabindex="1" style="margin-bottom: 10px" required autofocus>
+                    <label for="ProductName">Select Product from below list:</label>
+                    <select id="ProductName" name="ProductName">
+					  <option value="Milk">Milk</option>
+					  <option value="Curd">Dahi (Curd)</option>
+					  <option value="Bread">Bread</option>
+					</select>
                 </fieldset>
 
-                <fieldset>
-                    <label for="phonenumber">Visitor Phone Number:</label>
-                    <input id="phoneNO" placeholder="Visitor Phone Number" maxlength=10 class="form-control" aria-describedby="phonenumberHelp" type="tel" rows="1" cols="50" tabindex="2" required>
-				<!--<small id="phonenumberHelp" class="form-text text-muted" >We'll never share your phone number with anyone else.</small> -->
-                </fieldset>
-
-                <fieldset>
-                    <label for="message">Any Comments: </label>
-                    <textarea id="message" placeholder="Type your message here...." maxlength=1000 class="form-control" rows="2" cols="50" tabindex="3" style="margin-bottom: 10px"></textarea>
-                </fieldset>
-
-  				<fieldset>
-                    <label for="uploadFile">Take\Open Visitor Photo: </label>
-                    <input type="file" id="uploadFile" class="form-control" tabindex="4" style="margin-bottom: 10px">
+				<fieldset>
+				
+				<label for="MilkType">Milk Type:</label>
+                    <select id="Quantity" name="Quantity">
+					  <option value="Cow">Cow</option>
+					  <option value="Buffalo">Buffalo </option>
+					</select>
+					
+                    <label for="MilkQuantity">Milk Quantity:</label>
+                    <select id="MilkQuantity" name="MilkQuantity">
+					  <option value="1">1/2 Litre</option>
+					  <option value="2">1 Litre </option>
+					  <option value="3">2 Litre</option>
+					</select>
+					
+					<label for="MilkStartDate">Milk Start Date:</label>
+					<input type="date" id="MilkStartDate" name="MilkStartDate">
+					
+					<label for="MilkEndDate">Milk End Date:</label>
+					<input type="date" id="MilkEndDate" name="MilkEndDate">
+					
+					 <label for="MilkBrand">Milk Brand:</label>
+                    <select id="MilkBrand" name="MilkBrand">
+					  <option value="Amul">Amul</option>
+					  <option value="MotherDairy">MotherDairy </option>
+					  <option value="Other">Other</option>
+					</select>
+					
                 </fieldset>
                 
                 <fieldset>
-                        <img id="original-image" width="500px" style="display:none">
-                          <div class="image-sec">
-                                <img id="great-image" style="margin-bottom: 10px">
-                          </div>
+                    <label for="Quantity">Quantity:</label>
+                    <select id="Quantity" name="Quantity">
+					  <option value="1">1</option>
+					  <option value="2">2 </option>
+					  <option value="3">3</option>
+					</select>
                 </fieldset>
+
+               
+                <fieldset>
+                    <label for="Price">Price:</label>
+                    <input type="text" id="Price" name="Price">
+                </fieldset>
+               
                 
                 
                 
@@ -126,45 +156,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/active.js"></script>
     <script src="js/contextPath.js"></script>
-    <script> 
-    var input = document.getElementById("uploadFile");
-    input.onchange = function() {
-                                document.getElementById('great-image').src = '';
-                                $(".image-sec").append('<i class="fa fa-refresh fa-spin" style="font-size: 81px;color: #2e6da4;"></i>')
-                                setTimeout(resizeImageToSpecificWidth,200);
-    };
-
-    function resizeImageToSpecificWidth() {
-        var width = 300;
-		if (input.files && input.files[0]) {
-		var reader = new FileReader();
-		reader.onload = function(event) {
-		var img = new Image();
-		img.onload = function() {
-		if (img.width > width) {
-		var oc = document.createElement('canvas'), octx = oc.getContext('2d');
-		oc.width = img.width;
-		oc.height = img.height;
-		octx.drawImage(img, 0, 0);
-		while (oc.width * 0.5 > width) {
-		    oc.width *= 0.5;
-		    oc.height *= 0.5;
-		    octx.drawImage(oc, 0, 0, oc.width, oc.height);
-		}
-		oc.width = width;
-		oc.height = oc.width * img.height / img.width;
-		octx.drawImage(img, 0, 0, oc.width, oc.height);
-		                                                                        $(".fa-refresh").remove();
-		document.getElementById('great-image').src = oc.toDataURL();
-		}
-		};
-		document.getElementById('original-image').src = event.target.result;
-		img.src = event.target.result;
-		};
-		reader.readAsDataURL(input.files[0]);
-		}
- }
-
+  
        function submitData(){    	   
     	   //if($("#flatNumberName").val() == '' || $("#phoneNO").val() == '' || $("#message").val() == ''){
     		 if($("#flatNumberName").val() == '' ){
@@ -178,17 +170,12 @@
       		   return false;
       	   	}
     		
-    		 //else{
-    			 
-    			 var img = "";
-                if($("#great-image").attr('src') != undefined && $("#great-image").attr('src') != ""){
-                                img = $("#great-image").attr('src').split(',')[1];
-                }
+    		
 
                 var contextPath = postContextPath
     	   $.ajax({
     		      type: 'POST',
-    		      /* url: "addVisitorData", */
+    		      
     		      url: contextPath + "addVisitorData",
     		     data: 'flatno='+$("#flatNumberName").val()+'&phoneno='+$("#phoneNO").val()+'&comment='+$("#message").val()+'&uploadFile='+img,
     		    

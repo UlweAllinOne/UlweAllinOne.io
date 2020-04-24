@@ -1,5 +1,5 @@
 .header .header-top {
-    background: #01d262 none repeat scroll 0 0;
+    background: blue none repeat scroll 0 0;
     height: 50px;
 }
 
@@ -22,13 +22,13 @@
 }
 
 .activeHeader a {
-    color: green !important;
+    color: blue !important;
     font-weight: bold !important;
 }
 
 .activeHeader {
-    /*background-color: green;*/
-    color: green;
+    /*background-color: blue;*/
+    color: blue;
     text-align: center;
     padding: 2px;
     text-decoration: none;
@@ -44,7 +44,7 @@
 
 .borderstyle {
     border-bottom-style: solid;
-    border-bottom-color: #01d262;
+    border-bottom-color: blue;
 }
 
 
@@ -103,15 +103,12 @@
     font-size: 20px;
     font-weight: bold;
     margin-left: 11px;
-    color: #01d262;
+    color: blue;
 }
 .indeximage {
     background-image: url("img/carosal-bg.jpg");
 }
 
-.waterfineimage {
-    background-image: url("img/WaterFine.jpg");
-}
 
 .carosal-area {
   
@@ -159,7 +156,7 @@
 
 .carosal-area .text>h5.white-button a {
     background: #fff;
-    color: #01d262;
+    color: blue;
 }
 
 .carosal-area .owl-prev {
@@ -309,16 +306,16 @@
 }
 
 .our_activity .single-Promo:hover>h2 a {
-    color: #01d262;
+    color: blue;
 }
 
 .our_activity .single-Promo:hover>.promo-icon i {
-    background: #01d262;
+    background: blue;
     color: #fff;
 }
 
 .our_activity .single-Promo:hover>h2::before {
-    background: #01d262;
+    background: blue;
     color: #fff;
 }
 
@@ -449,7 +446,7 @@
 }
 
 .events_section_area .events_single:hover h3 {
-    color: #01d262;
+    color: blue;
     text-decoration: underline;
 }
 
@@ -494,7 +491,7 @@
 }
 
 .our_cuauses .our_cuauses_single .item p span {
-    color: #01d262;
+    color: blue;
 }
 
 .our_cuauses .our_cuauses_single .item p.progress-top {
@@ -513,7 +510,7 @@
 }
 
 .our_cuauses .progress-bar {
-    background-color: #01d262;
+    background-color: blue;
 }
 
 .our_cuauses .progress-text {
@@ -593,7 +590,7 @@
 }
 
 .our_cuauses .our_cuauses_single .item .for_padding:hover>h2 {
-    color: #01d262;
+    color: blue;
 }
 
 .our_cuauses .our_cuauses_single .item .for_padding:hover>h2 a {
@@ -622,7 +619,7 @@
     background: #fff none repeat scroll 0 0;
     border: 1px solid #01d262;
     border-radius: 5px;
-    color: #01d262;
+    color: blue;
     font-size: 25px;
     height: 50px;
     overflow: hidden;
@@ -710,7 +707,7 @@
     background: #fff none repeat scroll 0 0;
     border: 2px solid #01d262;
     border-radius: 10px;
-    color: #01d262;
+    color: blue;
     font-family: "Roboto", sans-serif;
     font-size: 15px;
     font-weight: 500;
@@ -768,7 +765,7 @@
 }
 
 .donors .donors_image .item p span {
-    color: #01d262;
+    color: blue;
 }
 
 .donors .donors_image .owl-theme .owl-nav {
@@ -858,7 +855,7 @@
     background: #fff none repeat scroll 0 0;
     border: 1px solid #01d262;
     border-radius: 5px;
-    color: #01d262;
+    color: blue;
     font-size: 25px;
     height: 50px;
     overflow: hidden;
@@ -867,7 +864,7 @@
 }
 
 .volunteer_area .owl-theme .owl-nav i:hover {
-    background: #01d262;
+    background: blue;
     color: #fff;
 }
 
