@@ -71,7 +71,7 @@
 	                    <label for="ProductName" style="color:darkblue">Select Product from below list:</label>
 	                    </div>
 	                    <div class="grid-item">
-	                    <select id="ProductName" name="ProductName">
+	                    <select  id="ProductName" name="ProductName">
 						  <option value="Milk">Milk</option>
 						  <option value="Curd">Dahi (Curd)</option>
 						  <option value="Bread">Bread</option>
@@ -167,7 +167,14 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/active.js"></script>
     <script src="js/contextPath.js"></script>
-  
+<Script>  
+		function myFunction()
+		{
+		var img = document.getElementById("image");
+		img.src="img/Milk.jpg";
+		return false;
+		}
+
        function submitData(){    	   
 
                 var contextPath = postContextPath
@@ -175,7 +182,7 @@
     		      type: 'POST',
     		      
     		      url: contextPath + "addMilkProductOrderData",
-    		     data: 'UserName='+$("#UserName").val()+ProductName='+$("#ProductName").val()+'&MilkType='+$("#MilkType").val()+'&MilkQuantity='+$("#MilkQuantity").val()+'&MilkStartDate='+MilkStartDate+'&MilkEndDate='+MilkEndDate+'&MilkBrand='+MilkBrand+'&Quantity='+Quantity+'&Price='+Price,
+    		     /* data: 'UserName='+$("#UserName").val()+ProductName='+$("#ProductName").val()+'&MilkType='+$("#MilkType").val()+'&MilkQuantity='+$("#MilkQuantity").val()+'&MilkStartDate='+MilkStartDate+'&MilkEndDate='+MilkEndDate+'&MilkBrand='+MilkBrand+'&Quantity='+Quantity+'&Price='+Price, */
     		    
     		      success: function (response) {
 							response=response.message;
