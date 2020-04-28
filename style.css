@@ -26,6 +26,11 @@
     font-weight: bold !important;
 }
 
+.borderstyle {
+    border-bottom-style: solid;
+    border-bottom-color: darkgreen;
+}
+
 .activeHeader {
     /*background-color: blue;*/
     color: blue;
