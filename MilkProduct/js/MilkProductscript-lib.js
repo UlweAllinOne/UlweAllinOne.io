@@ -138,7 +138,7 @@ function closePopup(){
 	localStorage.removeItem("mymap");
 	localStorage.removeItem("card");
 	localStorage.removeItem("detailsitms");
-	location.href="VegeFruitsindex.html";
+	location.href="MilkProductindex.html";
 
 }
 

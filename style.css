@@ -1,5 +1,5 @@
 .header .header-top {
-    background: blue none repeat scroll 0 0;
+    background: darkgreen none repeat scroll 0 0;
     height: 50px;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .activeHeader a {
-    color: blue !important;
+    color: darkgreen !important;
     font-weight: bold !important;
 }
 
@@ -32,8 +32,8 @@
 }
 
 .activeHeader {
-    /*background-color: blue;*/
-    color: blue;
+    /*background-color: darkgreen;*/
+    color: darkgreen;
     text-align: center;
     padding: 2px;
     text-decoration: none;
@@ -54,7 +54,7 @@
 
 .borderstyle {
     border-bottom-style: solid;
-    border-bottom-color: blue;
+    border-bottom-color: darkgreen;
 }
 
 
@@ -113,7 +113,7 @@
     font-size: 20px;
     font-weight: bold;
     margin-left: 11px;
-    color: blue;
+    color: darkgreen;
 }
 .indeximage {
     background-image: url("img/carosal-bg.jpg");
@@ -166,7 +166,7 @@
 
 .carosal-area .text>h5.white-button a {
     background: #fff;
-    color: blue;
+    color: darkgreen;
 }
 
 .carosal-area .owl-prev {
@@ -316,16 +316,16 @@
 }
 
 .our_activity .single-Promo:hover>h2 a {
-    color: blue;
+    color: darkgreen;
 }
 
 .our_activity .single-Promo:hover>.promo-icon i {
-    background: blue;
+    background: darkgreen;
     color: #fff;
 }
 
 .our_activity .single-Promo:hover>h2::before {
-    background: blue;
+    background: darkgreen;
     color: #fff;
 }
 
@@ -456,7 +456,7 @@
 }
 
 .events_section_area .events_single:hover h3 {
-    color: blue;
+    color: darkgreen;
     text-decoration: underline;
 }
 
@@ -501,7 +501,7 @@
 }
 
 .our_cuauses .our_cuauses_single .item p span {
-    color: blue;
+    color: darkgreen;
 }
 
 .our_cuauses .our_cuauses_single .item p.progress-top {
@@ -520,7 +520,7 @@
 }
 
 .our_cuauses .progress-bar {
-    background-color: blue;
+    background-color: darkgreen;
 }
 
 .our_cuauses .progress-text {
@@ -600,7 +600,7 @@
 }
 
 .our_cuauses .our_cuauses_single .item .for_padding:hover>h2 {
-    color: blue;
+    color: darkgreen;
 }
 
 .our_cuauses .our_cuauses_single .item .for_padding:hover>h2 a {
@@ -629,7 +629,7 @@
     background: #fff none repeat scroll 0 0;
     border: 1px solid #01d262;
     border-radius: 5px;
-    color: blue;
+    color: darkgreen;
     font-size: 25px;
     height: 50px;
     overflow: hidden;
@@ -717,7 +717,7 @@
     background: #fff none repeat scroll 0 0;
     border: 2px solid #01d262;
     border-radius: 10px;
-    color: blue;
+    color: darkgreen;
     font-family: "Roboto", sans-serif;
     font-size: 15px;
     font-weight: 500;
@@ -775,7 +775,7 @@
 }
 
 .donors .donors_image .item p span {
-    color: blue;
+    color: darkgreen;
 }
 
 .donors .donors_image .owl-theme .owl-nav {
@@ -865,7 +865,7 @@
     background: #fff none repeat scroll 0 0;
     border: 1px solid #01d262;
     border-radius: 5px;
-    color: blue;
+    color: darkgreen;
     font-size: 25px;
     height: 50px;
     overflow: hidden;
@@ -874,7 +874,7 @@
 }
 
 .volunteer_area .owl-theme .owl-nav i:hover {
-    background: blue;
+    background: darkgreen;
     color: #fff;
 }
 
