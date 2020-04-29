@@ -4,7 +4,7 @@ var disc=0;
 var context = "https://m8gohcb5gc.execute-api.ap-south-1.amazonaws.com/dev/veg/";
 cardCount();
 function initMap(type){
-	
+	$('#lodaingModal').modal('show');
 	$.ajax({
 			  type: 'POST',
 			  url: context + "getAllVegProducts",
@@ -19,6 +19,7 @@ function initMap(type){
 							
 						}
 						localStorage.setItem("mymap",JSON.stringify(map))	;
+						$('#lodaingModal').modal('hide');
 					},
 			  error : function (response) { 						
 					$('#lodaingModal').modal('hide');
@@ -34,11 +35,13 @@ function initMap(type){
 function cardCount(){
 	var count= 0;
 	var iteams  = localStorage.getItem("card");
-	$.each(iteams.split(','),function(i,j){
-		if(j != "null" && j != ""){
-			count++;
-		}
-	});
+	if(iteams != null){
+		$.each(iteams.split(','),function(i,j){
+			if(j != "null" && j != ""){
+				count++;
+			}
+		});
+	}
 	$(".cardCount").html("["+count+"]");
 }
 
@@ -130,8 +133,22 @@ function checkOut(){
 	location.href="checkout.html";	
 }
 
+function closePopup(){
+	$('#lodaingModal').modal('hide');
+	localStorage.removeItem("mymap");
+	localStorage.removeItem("card");
+	localStorage.removeItem("detailsitms");
+	location.href="VegeFruitsindex.html";
+	
+}
+
 
 function placeOrder(){
+	
+	var r = confirm("Are you sure you want to place order?");
+		if (r == true) {
+		
+	$('#lodaingModal').modal('show');
 	var iteams  = finalOrderDetails;
 	$("#finalTotal").html(iteams.split(',')[0]);
 	$("#deliveryCharge").html(deliveryCharge);
@@ -160,7 +177,8 @@ function placeOrder(){
 			  url: context + "saveVegOrders",
 			  data:JSON.stringify(array),
 			  success: function (response) { 
-				alert("Your order is placed successfully order id is "+$(response).attr('orderid'))
+						$("#orderConfirmationContent").html(response);
+						
 					},
 			  error : function (response) { 						
 					$('#lodaingModal').modal('hide');
@@ -169,8 +187,5 @@ function placeOrder(){
 
 			});
 	
-	
-	
-	
-	
+		}
 }
