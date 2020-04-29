@@ -18,11 +18,12 @@ function initMap(type){
 							generateProduct();
 							
 						}
-						localStorage.setItem("mymap",JSON.stringify(map))	;
-						$('#lodaingModal').modal('hide');
+						localStorage.setItem("vegmymap",JSON.stringify(map))	;
+						
+						setTimeout(hidePopup, 500);
 					},
 			  error : function (response) { 						
-					$('#lodaingModal').modal('hide');
+					setTimeout(hidePopup, 500);
 					alert(response);
 					}
 
@@ -31,10 +32,14 @@ function initMap(type){
 		
 }
 
+function hidePopup(){
+	$('#lodaingModal').modal('hide');
+}
+
 
 function cardCount(){
 	var count= 0;
-	var iteams  = localStorage.getItem("card");
+	var iteams  = localStorage.getItem("vegcard");
 	if(iteams != null){
 		$.each(iteams.split(','),function(i,j){
 			if(j != "null" && j != ""){
@@ -46,7 +51,7 @@ function cardCount(){
 }
 
 function addtoCard(id){
-	localStorage.setItem("card",localStorage.getItem("card")+","+id);
+	localStorage.setItem("vegcard",localStorage.getItem("vegcard")+","+id);
 	alert(map[id].split(",")[0]+ " successfully added to cart.");
 	cardCount();
 	return false;
@@ -75,27 +80,27 @@ function mainTotal(){
 	finalOrderDetails = sum+","+finalTot;
 }
 
-function removeProduct(j){
-	var iteams  = localStorage.getItem("card");
+function removeProduct(j,i){
+	var iteams  = localStorage.getItem("vegcard");
 	iteams = iteams.replace(j,"");
-	localStorage.setItem("card",iteams);
-	$("#sectiondetails"+j).remove();
+	localStorage.setItem("vegcard",iteams);
+	$("#sectiondetails"+i).remove();
 	mainTotal();
 	cardCount();
 	return false;
 }
 function initCart(){
-	map = JSON.parse(localStorage.getItem("mymap"));
+	map = JSON.parse(localStorage.getItem("vegmymap"));
 	displayCardDetails();
 }
 
 function displayCardDetails(){
 	
-	var iteams  = localStorage.getItem("card");
+	var iteams  = localStorage.getItem("vegcard");
 	$.each(iteams.split(','),function(i,j){
 	if(j != "null" && j != ""){
 		var value = map[j].split(',');
-		var str = '<tr class="text-center" id="sectiondetails'+i+'"><td class="product-remove"><a href="#" onclick="return removeProduct('+i+')"><span class="ion-ios-close"></span></a></td><td class="image-prod"><div class="img" style="background-image:url(images/product-'+j+'.jpg);"></div></td><td class="product-name"><h3>'+value[0]+'</h3><p>'+value[4]+'</p></td><td class="price">'+value[2]+' Rs</td><td class="quantity"><div class="input-group mb-3"><input type="text" name="quantity'+i+'"  onkeyup="return calcuateAmt(this,'+i+','+value[2]+','+j+')" onchange="return calcuateAmt(this,'+i+','+value[2]+','+j+')" class="quantity form-control input-number" value="1" maxlength="1"></div></td><td id="totVal'+i+'" data-val="'+j+',1" class="total">'+value[2]+' Rs</td></tr>';
+		var str = '<tr class="text-center" id="sectiondetails'+i+'"><td class="product-remove"><a href="#" onclick="return removeProduct('+j+','+i+')"><span class="ion-ios-close"></span></a></td><td class="image-prod"><div class="img" style="background-image:url(images/product-'+j+'.jpg);"></div></td><td class="product-name"><h3>'+value[0]+'</h3><p>'+value[4]+'</p></td><td class="price">'+value[2]+' Rs</td><td class="quantity"><div class="input-group mb-3"><input type="text" name="quantity'+i+'"  onkeyup="return calcuateAmt(this,'+i+','+value[2]+','+j+')" onchange="return calcuateAmt(this,'+i+','+value[2]+','+j+')" class="quantity form-control input-number" value="1" maxlength="1"></div></td><td id="totVal'+i+'" data-val="'+j+',1" class="total">'+value[2]+' Rs</td></tr>';
 		$("#cardDetails").append(str);
 	}
 	});
@@ -129,15 +134,15 @@ function checkOut(){
 	})
 	details = details.substr(0,details.length -1);
 
-	localStorage.setItem("detailsitms",details);
+	localStorage.setItem("vegdetailsitms",details);
 	location.href="checkout.html";	
 }
 
 function closePopup(){
 	$('#lodaingModal').modal('hide');
-	localStorage.removeItem("mymap");
-	localStorage.removeItem("card");
-	localStorage.removeItem("detailsitms");
+	localStorage.removeItem("vegmymap");
+	localStorage.removeItem("vegcard");
+	localStorage.removeItem("vegdetailsitms");
 	location.href="VegeFruitsindex.html";
 	
 }

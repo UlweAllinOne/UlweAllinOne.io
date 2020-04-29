@@ -70,7 +70,8 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
-
+<div class="container">
+<div class="row">
 	<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
 	 			<div class="cart-total mb-3">
 	 					<h3>View Order details</h3>
@@ -83,8 +84,18 @@
 	            <input type="submit" value="View Orders"  onclick="return submitViewOrder()" class="btn btn-primary py-3 px-5">
 	            </div>
 	</div>
+</div>
 
-   
+<div class="container" id="ordersection">
+<h1>Below are your order details</h1>
+<p id="orderHeader"></p>
+<pre id="details1"></pre>
+<pre id="details2"></pre>
+<pre id="details3"></pre>
+
+</div>
+</div>
+   <br><br><br>
 
    <footer class="footer">
             <div class="container">
@@ -123,35 +134,30 @@
   <script src="js/main.js"></script>
   
 <script>
-$(document).ready(function(){
-	submitViewOrder(){
+$("#ordersection").hide();
+function submitViewOrder(){
+$("#ordersection").hide();
 			
 			 $.ajax({
 			  type: 'POST',
 			  url: "https://m8gohcb5gc.execute-api.ap-south-1.amazonaws.com/dev/common/findOrder",
-			  data : '{"orderid":+$("#Orderid").val()}',
-			  /* data : '{"orderid":"R2SknBJG"}', */
-			  
+			  data : '{"orderid":"'+$("#Orderid").val()+'"}',
 			  success: function (response) { 
-				  var orderdt = $(response).attr("datetime")
-				  var finalPrice = $(response).attr("finalPrice")
-				  var orderStatus = $(response).attr("orderStatus")
-				  var emailid = $(response).attr("emailid")
-				  var mobileNo = $(response).attr("mobileNo")
-				  var userName = $(response).attr("userName")
-				  
-					alert(response);
-					},
+						$("#orderHeader").html('Thanks '+ $($(response).attr('user')).attr('userName') + ' for placing order with UlweAllInOne online Store.')
+						$("#details1").html('Your order was placed on '+$($(response).attr('master')).attr('datetime')+'. Order status is '+$($(response).attr('master')).attr('orderStatus'))+'.';
+						$("#details2").html('Delivery person will contact you on mobile no '+$($(response).attr('user')).attr('mobileNo')+', or email id '+$($(response).attr('user')).attr('emailid'))+'.';
+						$("#details3").html('Delivery address is '+$($(response).attr('user')).attr('address'))+'.';
+				$("#ordersection").show();
+				},
 			  error : function (response) { 						
 					
-					alert(response);
+					alert("Please enter valid Order ID. Order ID is send to you via email and SMS.");
 					}
 
 			});
 			
 	}		
-  
-});
+
 </script>  
   </body>
 </html>
