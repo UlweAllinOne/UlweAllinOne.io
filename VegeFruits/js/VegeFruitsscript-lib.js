@@ -150,6 +150,29 @@ function closePopup(){
 
 function placeOrder(){
 	
+	if($("#fname").val() == '' ){
+		   alert('Please enter your Name.');
+		   $("#fname").focus()
+		   return false;
+	   	}
+	 	if($("#streetAddress").val() == '' ){
+		   alert('Please enter Address.');
+		 $("#streetAddress").focus()
+		   return false;
+	   	}
+		 if($("#mobileNo").val() == '' ){
+		   alert('Please enter Mobile Number.');
+		 $("#mobileNo").focus()
+		   return false;
+	   	}
+
+		 
+		 if($("#emailid").val() == '' ){
+		   alert('Please enter emailid.');
+		   $("#emailid").focus()
+		   return false;
+	   }
+	
 	var r = confirm("Are you sure you want to place order?");
 		if (r == true) {
 		
