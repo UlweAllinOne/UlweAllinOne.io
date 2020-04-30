@@ -77,9 +77,9 @@
                 </fieldset>
 
                 <fieldset>
-                    <label for="phonenumber">Your Phone Number</label>
-                    <input id="phoneNO" placeholder="Your Phone Number" maxlength=10 class="form-control" aria-describedby="phonenumberHelp" type="tel" rows="1" cols="50" tabindex="2" required>
-                    <small id="phonenumberHelp" class="form-text text-muted" >We'll never share your phone number with anyone else.</small>
+                    <label for="phonenumber">Your Mobile Number</label>
+                    <input id="phoneNO" placeholder="Your Mobile Number" maxlength=10 class="form-control" aria-describedby="phonenumberHelp" type="tel" rows="1" cols="50" tabindex="2" required>
+                    <small id="phonenumberHelp" class="form-text text-muted" >We'll never share your mobiles number with anyone else.</small>
                 </fieldset>
 
                 <fieldset>
@@ -121,6 +121,22 @@
     <script src="js/bootstrap.min.js"></script>
     
     <script> 
+    if($("#Name").val() == '' ){
+		   alert('Please enter your Name.');
+		   $("#Name").focus()
+		   return false;
+	   	}
+		 if($("#phoneNO").val() == '' ){
+		   alert('Please enter Mobile Number.');
+		 $("#phoneNO").focus()
+		   return false;
+	   	}
+		 if($("#message").val() == '' ){
+ 		   alert('Please enter Feedback / Suggestions.');
+ 		   $("#message").focus()
+ 		   return false;
+ 	   }
+    
 	var context = "https://m8gohcb5gc.execute-api.ap-south-1.amazonaws.com/dev/common/";
 	function submitFeedBack(){
     var r = confirm("Are you sure you want to submit feedback?");
