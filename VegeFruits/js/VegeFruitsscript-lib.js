@@ -186,6 +186,7 @@ function placeOrder(){
 		if (r == true) {
 		
 	$('#lodaingModal').modal('show');
+	$("#closeButton").hide();
 	var iteams  = finalOrderDetails;
 	$("#finalTotal").html(iteams.split(',')[0]);
 	$("#deliveryCharge").html(deliveryCharge);
@@ -215,10 +216,11 @@ function placeOrder(){
 			  data:JSON.stringify(array),
 			  success: function (response) { 
 						$("#orderConfirmationContent").html(response);
-						
+						$("#closeButton").show();
 					},
 			  error : function (response) { 						
 					$('#lodaingModal').modal('hide');
+					$("#closeButton").show();
 					alert(response);
 					}
 
