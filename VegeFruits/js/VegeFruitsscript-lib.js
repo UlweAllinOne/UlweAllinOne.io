@@ -174,8 +174,11 @@ function placeOrder(){
 		 $("#mobileNo").focus()
 		   return false;
 	   	}
-
-		 
+		 if($("#mobileNo").val().length != 10 ){
+			   alert('Please enter 10 digit Mobile Number.');
+			 $("#mobileNo").focus()
+			   return false;
+		   	}
 		 if($("#emailid").val() == '' ){
 		   alert('Please enter emailid.');
 		   $("#emailid").focus()
