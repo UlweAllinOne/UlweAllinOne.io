@@ -73,6 +73,15 @@ function mainTotal(){
 		sum = sum + parseInt(value[0]);
 	});
 	$("#finalTotal").html(sum + " Rs");
+	if(sum <= 50){
+		deliveryCharge=20;
+	}else if(sum <= 100 && sum > 50){
+		deliveryCharge=10;
+	}else if(sum <= 200 && sum > 101){
+		deliveryCharge=5;
+	}else if(sum > 200){
+		deliveryCharge=0;
+	}
 	$("#deliveryCharge").html(deliveryCharge + " Rs");
 	$("#disc").html(disc + " Rs");
 	var finalTot = parseInt(sum) + parseInt(deliveryCharge) - parseInt(disc);
