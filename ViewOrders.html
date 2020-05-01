@@ -79,7 +79,7 @@
 						
 	            <div class="form-group">
 	              	<!-- <label for="">View Order details</label> -->
-	                <input id="Orderid" type="text" class="form-control text-left px-3" placeholder="">
+	                <input id="Orderid" type="text" class="form-control text-left px-3" onkeypress="return checkSpcialChar(event)"  placeholder="" maxlength=20>
 	            </div>
 	            <input type="submit" value="View Orders"  onclick="return submitViewOrder()" class="btn btn-primary py-3 px-5">
 	            </div>
@@ -158,6 +158,17 @@ $("#ordersection").hide();
 			
 	}		
 
-</script>  
+</script>
+
+   <script type="text/javascript">
+   function checkSpcialChar(event){
+       if(!((event.keyCode >= 65) && (event.keyCode <= 90) || (event.keyCode >= 97) && (event.keyCode <= 122) || (event.keyCode >= 48) && (event.keyCode <= 57))){
+          event.returnValue = false;
+          return;
+       }
+       event.returnValue = true;
+    }
+ </script>
+   
   </body>
 </html>
