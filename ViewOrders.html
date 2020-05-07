@@ -70,7 +70,7 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
-<div class="container">
+<!-- <div class="container"> -->
 <div class="row">
 	<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
 	 			<div class="cart-total mb-3">
@@ -87,15 +87,32 @@
 </div>
 
 <div class="container" id="ordersection">
-<h1>Below are your order details</h1>
-<p id="orderHeader"></p>
-<pre id="details1"></pre>
-<pre id="details2"></pre>
-<pre id="details3"></pre>
+	<div class="row">
+		<div class="cart-wrap ftco-animate fadeInUp ftco-animated">
+			<div class="cart-total mb-3"><h3 id="orderHeader"></h3>
+				<div id="detailssub"></div>
+				
+			</div>
+		</div>
+	</div>
 
 </div>
-</div>
    <br><br><br>
+  <div class="modal fade" id="lodaingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Loading Please Wait</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>Please wait your data is been progress. </h6>
+      </div>
+    </div>
+  </div>
+  </div>
 
    <footer class="footer">
             <div class="container">
@@ -145,35 +162,9 @@
   <script src="js/aos.js"></script>
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
-  
-<script>
-$("#ordersection").hide();
-function submitViewOrder(){
-$("#ordersection").hide();
-			
-			 $.ajax({
-			  type: 'POST',
-			  url: "https://m8gohcb5gc.execute-api.ap-south-1.amazonaws.com/dev/common/findOrder",
-			  data : '{"orderid":"'+$("#Orderid").val()+'"}',
-			  success: function (response) { 
-						$("#orderHeader").html('Thanks '+ $($(response).attr('user')).attr('userName') + ' for placing order with UlweAllInOne online Store.')
-						$("#details1").html('Your order was placed on '+$($(response).attr('master')).attr('datetime')+'. Order status is '+$($(response).attr('master')).attr('orderStatus'))+'.';
-						$("#details2").html('Delivery person will contact you on mobile no '+$($(response).attr('user')).attr('mobileNo')+', or email id '+$($(response).attr('user')).attr('emailid'))+'.';
-						$("#details3").html('Delivery address is '+$($(response).attr('user')).attr('address'))+'.';
-				$("#ordersection").show();
-				},
-			  error : function (response) { 						
-					
-					alert("Please enter valid Order ID. Order ID is send to you via email and SMS.");
-					}
-
-			});
-			
-	}		
-
-</script>
-
+<script id="myscriptLib" myCustomAttrib="common"  src="js/script-lib.js"></script>
    <script type="text/javascript">
+	$("#ordersection").hide();
    function checkSpcialChar(event){
 	   if(!((event.keyCode >= 64) && (event.keyCode <= 90) || (event.keyCode >= 32) && (event.keyCode <= 32) || (event.keyCode >= 95) && (event.keyCode <= 122) || (event.keyCode >= 44) && (event.keyCode <= 57))){
           event.returnValue = false;
