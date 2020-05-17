@@ -499,5 +499,5 @@ $("#ordersection").hide();
 					}
 
 			});
-			
-	}	
+		
+ }	
