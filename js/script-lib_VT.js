@@ -226,6 +226,13 @@ function applyCoupon(){
 }
 
 function placeOrder(){
+	var iteams  = finalOrderDetails;
+	
+	if ((parseInt(iteams.split(',')[1]) > 1) && (parseInt(iteams.split(',')[1]) < 200)){
+		alert('Order Amount Should be above 200 Rs.');
+		   $("#fname").focus()
+		   return false;
+	}
 
 	if($("#fname").val() == '' ){
 		   alert('Please enter your Name.');
@@ -258,7 +265,7 @@ function placeOrder(){
 
 	$('#lodaingModal').modal('show');
 	$("#closeButton").hide();
-	var iteams  = finalOrderDetails;
+	
 	$("#finalTotal").html(iteams.split(',')[0]);
 	$("#deliveryCharge").html(deliveryCharge);
 	$("#disc").html(disc);
@@ -397,7 +404,7 @@ function generateDetails(response1){
 	$(response1).each(function(i,response){
 		var selectdd ="";
 		if($($(response).attr('master')).attr('orderStatus') != 'Delivered'){
-		selectdd = '<select id="statusddval'+count+'"><option value="In-Progress">In-Progress</option><option value="Delivered">Delivered</option><option value="UnReachable">UnReachable</option><option value="Out of Stock">Out of Stock</option></select>&nbsp;&nbsp;<input type="button" data-id="'+$($(response).attr('master')).attr('id')+'"  data-emailid="'+$($(response).attr('user')).attr('emailid')+'" data-name="'+$($(response).attr('user')).attr('userName')+'" class="btn btn-primary" onclick="return updatestatus(this,'+count+')" value="update" />';
+		selectdd = '<select id="statusddval'+count+'"><option value="In-Progress">In-Progress</option><option value="Delivered">Delivered</option><option value="UnReachable">UnReachable</option><option value="Cancle">Cancle</option><option value="Out of Stock">Out of Stock</option></select>&nbsp;&nbsp;<input type="button" data-id="'+$($(response).attr('master')).attr('id')+'"  data-emailid="'+$($(response).attr('user')).attr('emailid')+'" data-name="'+$($(response).attr('user')).attr('userName')+'" class="btn btn-primary" onclick="return updatestatus(this,'+count+')" value="update" />';
 		}
 		//selectdd = selectdd + "
 		if(lastDate != $($(response).attr('user')).attr('datetime').substr(0,10)){
@@ -499,5 +506,5 @@ $("#ordersection").hide();
 					}
 
 			});
-		
- }	
+			
+	}	
