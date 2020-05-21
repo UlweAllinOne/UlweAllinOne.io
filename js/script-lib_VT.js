@@ -257,6 +257,7 @@ function applyCoupon(){
 }
 
 function placeOrder(){
+<<<<<<< HEAD
 	if(minOrder == undefined || finalCPrice == undefined){
 		alert("Please add some items in cart before placing order.");
 		return false;
@@ -265,6 +266,14 @@ function placeOrder(){
 	if(parseInt(minOrder) > parseInt(finalCPrice)){
 		alert("Sorry you must have minimum order of "+minOrder + " Rs.");
 		return false;
+=======
+	var iteams  = finalOrderDetails;
+	
+	if ((parseInt(iteams.split(',')[1]) > 1) && (parseInt(iteams.split(',')[1]) < 200)){
+		alert('Order Amount Should be above 200 Rs.');
+		   $("#fname").focus()
+		   return false;
+>>>>>>> e91dace93a9b3215eef77c0d97a744ea7ebf59aa
 	}
 
 	if($("#fname").val() == '' ){
@@ -298,6 +307,14 @@ function placeOrder(){
 
 	$('#lodaingModal').modal('show');
 	$("#closeButton").hide();
+<<<<<<< HEAD
+=======
+	
+	$("#finalTotal").html(iteams.split(',')[0]);
+	$("#deliveryCharge").html(deliveryCharge);
+	$("#disc").html(disc);
+	$("#mainTotal").html(iteams.split(',')[1]);
+>>>>>>> e91dace93a9b3215eef77c0d97a744ea7ebf59aa
 	var array = {};
 	array["userName"]=$("#fname").val() + " "+$("#lname").val();
 	array["address"]=$("#sector").val()+ ", "+$("#apartment").val()+ ", "+$("#streetAddress").val()+", "+$("#city").val()+ ", "+$("#pincode").val();
@@ -530,8 +547,13 @@ function generateDetails(response1){
 	var detailsmsg = "";
 	$(response1).each(function(i,response){
 		var selectdd ="";
+<<<<<<< HEAD
 		if(! ($(response).attr('orderStatus') == 'Delivered' || $(response).attr('orderStatus') == 'Cancelled')){
 		selectdd = '<select id="statusddval'+count+'"><option value="In-Progress">In-Progress</option><option value="Delivered">Delivered</option><option value="UnReachable">UnReachable</option><option value="Out of Stock">Out of Stock</option><option value="Cancelled">Cancelled</option></select>&nbsp;&nbsp;<input type="button" data-id="'+$(response).attr('id')+'"  data-emailid="'+$($(response).attr('user')).attr('emailid')+'" data-name="'+$($(response).attr('user')).attr('userName')+'" class="btn btn-primary" onclick="return updatestatus(this,'+count+')" value="update" />';
+=======
+		if($($(response).attr('master')).attr('orderStatus') != 'Delivered'){
+		selectdd = '<select id="statusddval'+count+'"><option value="In-Progress">In-Progress</option><option value="Delivered">Delivered</option><option value="UnReachable">UnReachable</option><option value="Cancle">Cancle</option><option value="Out of Stock">Out of Stock</option></select>&nbsp;&nbsp;<input type="button" data-id="'+$($(response).attr('master')).attr('id')+'"  data-emailid="'+$($(response).attr('user')).attr('emailid')+'" data-name="'+$($(response).attr('user')).attr('userName')+'" class="btn btn-primary" onclick="return updatestatus(this,'+count+')" value="update" />';
+>>>>>>> e91dace93a9b3215eef77c0d97a744ea7ebf59aa
 		}
 			var details="<ol>";
 			$($($(response).attr('orderDetailsList'))).each(function(i,response){
@@ -625,6 +647,7 @@ $("#ordersection").hide();
 					}
 
 			});
+<<<<<<< HEAD
 		
  }	
  
@@ -673,3 +696,7 @@ function submitFeedBack(){
 			});
 		}
 	} 
+=======
+			
+	}	
+>>>>>>> e91dace93a9b3215eef77c0d97a744ea7ebf59aa
