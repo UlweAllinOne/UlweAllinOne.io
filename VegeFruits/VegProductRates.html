@@ -128,6 +128,88 @@
     </div>
   </div>
   </div>
+  
+    <div class="modal fade" id="vendorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">View Update Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="popUpContent">
+			<div class="row">
+				<div class="form-group name1 col-md-6">
+					<label for="exampleInputEmail1" class="formText">Name:</label>
+					<input type="text" class="form-control" id="vendorName" name="vendorName" maxlength="20">
+					<input type="hidden" class="form-control" id="idval" name="id">
+				</div>
+
+				<div class="form-group name2 col-md-6">
+					<label for="exampleInputEmail1## Heading ##" class="formText">MobileNo:</label>
+					<input type="text" class="form-control" id="mobileNo" name="mobileNo" maxlength="50">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group name1 col-md-6">
+					<label for="exampleInputEmail1" class="formText">Email ID:</label>
+					<input type="text" class="form-control" id="emailid" name="emailid" maxlength="20">
+				</div>
+
+				<div class="form-group name2 col-md-6">
+					<label for="exampleInputEmail1## Heading ##" class="formText">MinOrder:</label>
+					<input type="text" class="form-control" id="minOrder" name="minOrder" maxlength="50">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group name1 col-md-6">
+					<label for="exampleInputEmail1" class="formText">DiscFormula:</label>
+					<input type="text" class="form-control" id="discFormula" name="discFormula" maxlength="20">
+				</div>
+
+				<div class="form-group name2 col-md-6">
+					<label for="exampleInputEmail1## Heading ##" class="formText">Discount Description:</label>
+					<input type="text" class="form-control" id="discountDesc" name="discountDesc" maxlength="50">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group name1 col-md-6">
+					<label for="exampleInputEmail1" class="formText">OrderDeliverTime:</label>
+					<input type="text" class="form-control" id="orderDeliverTime" name="orderDeliverTime" maxlength="20">
+				</div>
+
+				<div class="form-group name2 col-md-6">
+					<label for="exampleInputEmail1## Heading ##" class="formText">Password:</label>
+					<input type="text" class="form-control" id="vendorpassword" name="vendorpassword" maxlength="50">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group name1 col-md-6">
+					<label for="exampleInputEmail1" class="formText">Mode:(Do not change mode)</label>
+					<select id="envMode" name="envMode" class="form-control">
+					<option value="L">Live</option>
+					<option value="T">Testing</option>
+					</select>
+					
+				</div>
+
+				<div class="form-group name2 col-md-6">
+					<label for="exampleInputEmail1## Heading ##" class="formText">Coupon:</label>
+					<input type="text" class="form-control" id="coupon" name="coupon" maxlength="50">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group name2 col-md-12">
+					<input type="button" value="Update Information" class="btn btn-primary" onclick="return updateVendorDetails()">
+					<input type="button" value="Close" class="btn btn-primary" onclick="return closeVendorDetails()">
+				</div>
+			</div>
+      </div>
+    </div>
+  </div>
+  </div>
+      
       
 
   <!-- loader -->
