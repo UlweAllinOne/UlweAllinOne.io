@@ -628,6 +628,47 @@ $("#ordersection").hide();
 		
  }	
  
+  	
+function refreshMaster(){	
+	$.ajax({	
+		  type: 'POST',	
+		  url: contextCommon + "refreshMaster",	
+		  data : JSON.stringify(map),	
+		  success: function (response) { 	
+					alert(response);	
+				},	
+		  error : function (response) { 	
+					alert("Error. Please contact support");	
+				}	
+		});	
+}	
+function getOfferAll(){	
+	$.ajax({	
+		  type: 'POST',	
+		  url: contextCommon + "mainOfferSection",	
+		  data : JSON.stringify(map),	
+		  success: function (response) { 	
+					$("#offerinfo").html(response);	
+				},	
+		  error : function (response) { 	
+						
+				}	
+		});	
+}	
+function getOfferProduct(){	
+	$.ajax({	
+		  type: 'POST',	
+		  url: context + "productOfferSection",	
+		  data : JSON.stringify(map),	
+		  success: function (response) { 	
+					$("#offerinfo").html(response);	
+				},	
+		  error : function (response) { 	
+						
+				}	
+		});	
+}
+ 
 function submitFeedBack(){
 		
 		if($("#Name").val() == '' ){
