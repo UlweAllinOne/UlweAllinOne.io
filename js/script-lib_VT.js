@@ -303,6 +303,7 @@ function placeOrder(){
 	array["address"]=$("#sector").val()+ ", "+$("#apartment").val()+ ", "+$("#streetAddress").val()+", "+$("#city").val()+ ", "+$("#pincode").val();
 	array["emailid"]=$("#emailid").val();
 	array["mobileNo"]=$("#mobileNo").val();
+	array["additionalNote"]=$("#additionalNote").val();
 	array["inputdata"]=f;
 	array["carddetails"]=localStorage.getItem(myCurrentReq+"card").substr(5);
 	if(isCoupancase == "Y"){
@@ -651,7 +652,7 @@ function getOfferAll(){
 		  url: contextCommon + "mainOfferSection",
 		  data : JSON.stringify(map),
 		  success: function (response) { 
-					$("#offerinfo").html(response);
+					$(".offerMarqueNote").html("<p>"+response+'</p>');
 				},
 		  error : function (response) { 
 					
@@ -666,7 +667,7 @@ function getOfferProduct(){
 		  url: context + "productOfferSection",
 		  data : JSON.stringify(map),
 		  success: function (response) { 
-					$("#offerinfo").html(response);
+					$(".offerMarqueNoteDetails").html("<p>"+response+'</p>');
 				},
 		  error : function (response) { 
 					
