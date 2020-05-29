@@ -537,7 +537,7 @@ function generateDetails(response1){
 		selectdd = '<select id="statusddval'+count+'"><option value="In-Progress">In-Progress</option><option value="Delivered">Delivered</option><option value="UnReachable">UnReachable</option><option value="Out of Stock">Out of Stock</option><option value="Cancelled">Cancelled</option></select>&nbsp;&nbsp;<input type="button" data-id="'+$(response).attr('id')+'"  data-emailid="'+$($(response).attr('user')).attr('emailid')+'" data-name="'+$($(response).attr('user')).attr('userName')+'" class="btn btn-primary" onclick="return updatestatus(this,'+count+')" value="update" />';
 		}
 		var additionalInfo = "";
-		if($(response).attr('additionalNote') != null && $(response).attr('additionalNote') != ""){
+		if($(response).attr('additionalNote') != null && $(response).attr('additionalNote') != "\"\""){
 			additionalInfo = ", <b>Additional Info:</b>"+$(response).attr('additionalNote');
 		}
 		var details="<ol>";
