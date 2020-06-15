@@ -847,7 +847,7 @@ function showMoneyTable(response1){
 	  doc = new jsPDF('1', 'pt','a4');
 	  var res = doc.autoTableHtmlToJson(document.getElementById('moneyCalcTable'));
 	  doc.setFontSize(15);
-	  doc.text(40,40, $("#serviceArea").html()+" Service");
+	  doc.text(40,40, $("#serviceArea").html()+" "+typeName+"Service");
 	  doc.setFontSize(9);
 	  doc.setTextColor(255, 0, 0);
 	  doc.text(40,60, msgTop1);
