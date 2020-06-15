@@ -355,9 +355,7 @@ function initMasterRates(){
 					}
 
 			});
-
-
-}
+		}
 
 function initOrderDetails(){
 			$('#lodaingModal').modal('show');
@@ -730,3 +728,144 @@ function submitFeedBack(){
 			});
 		}
 	} 
+	
+function initMoneyCalc(){
+	$('#lodaingModal').modal('show');
+			var data = '{"password":"'+$("#password").val()+'"}';
+			$.ajax({
+			  type: 'POST',
+			  url: context + "checkPassword",
+			  data : data,
+			  success: function (response) { 
+					setTimeout(hidePopup, 500);
+					$("#moneyCalcForm").show();
+					},
+			  error : function (response) { 
+					setTimeout(hidePopup, 500);				
+					alert("Invalid Password");
+					
+					}
+
+			});
+		}
+function calcuateMoney(){
+	
+	if($("#fromDate").val() == "" || $("#toDate").val() == "" ){
+			alert("Please enter From date / To date");
+			return false;
+	}
+	
+	$('#lodaingModal').modal('show');
+			var map={};
+			map["fromDate"]=$("#fromDate").val();
+			map["toDate"]=$("#toDate").val();
+			map["password"]=$("#password").val();
+			
+			$.ajax({
+			  type: 'POST',
+			  url: context + "getMoneyDetails",
+			  data : JSON.stringify(map),
+			  success: function (response) { 
+					setTimeout(hidePopup, 500);
+					//$("#moneyCalcForm").show();
+					showMoneyTable(response);
+					},
+			  error : function (response) { 
+					setTimeout(hidePopup, 500);				
+					alert(response.responseJSON);
+					
+					}
+
+			});
+	
+	
+}
+var doc;
+function showMoneyTable(response1){
+	
+	var str = "<table id='moneyCalcTable' class='table table-striped table-bordered table-hover'><thead><tr><td width='5%'>#</td><td width='25%'>Contact Details</td><td width='25%'>Payment Info</td><td width='45%'>Order Details</td></tr></thead><tbody>";
+	var totalAmount = 0;
+	var totalComm = 0;
+	$(response1).each(function(i,response){
+		totalAmount = totalAmount + parseInt($(response).attr('finalPrice'));
+		 var str1 ="<ol>";
+			$($($(response).attr('orderDetailsList'))).each(function(i,response){
+				str1= str1 +"<li>"+$(response).attr('description')+"</li>";
+			});
+		str1= str1 + "</ol>";
+		var intStr = "";
+		if($("#commissionCalc").val() != ""){
+		 var intrestCalc = (parseInt($(response).attr('finalPrice')) * parseInt($("#commissionCalc").val())) / 100;
+		intStr = "<li> As per "+$("#commissionCalc").val()+"% : <b>"+intrestCalc+" Rs</b></li>";
+		totalComm = totalComm + intrestCalc;
+		}
+		str = str + "<tr><td>"+(++i)+"</td><td><ul><li>Name: "+$($(response).attr('user')).attr('userName')+"</li><li>Mobile No: "+$($(response).attr('user')).attr('mobileNo')+"</li><li>Address: "+$($(response).attr('user')).attr('address')+"</li></td>";
+		str = str + "<td><ul><li>Order ID: "+$(response).attr('orderid')+"</li><li>Date:"+$(response).attr('datetime')+"</li><li>Final Price: <b>"+$(response).attr('finalPrice')+" Rs</b></li><li>Delivery Charges: "+$(response).attr('deliveryCharge')+" Rs</li><li>Discount: "+$(response).attr('discount')+" Rs</li><li>OrderStatus: "+$(response).attr('orderStatus')+"</li>"+intStr+"</td>";
+		str = str + "<td>"+str1+"</td></tr>";
+					
+		
+		$("#moneyTable").html(str);
+		
+	});
+	var perShare = "";
+	var perShare1 = "";
+	if(totalComm != 0){
+		perShare = " Total Share Amount is: <b>"+Math.trunc(totalComm)+"</b> Rs.";
+		perShare1 = " Total Share Amount is: "+Math.trunc(totalComm)+" Rs. ";
+	}
+	var exportPDF = '&nbsp;&nbsp;&nbsp;<input type="submit" value="Export PDF"  onclick="return exportPDF()" class="btn btn-primary">';
+	var msgTop = "Total Transaction made is "+$(response1).length + ". Total Transaction Amount is: <b>"+totalAmount+" Rs</b>."+perShare+exportPDF ;	
+	$("#moneySummaryTable").html("<div class='col-md-12'>"+msgTop+"</div>");
+	var fromto = "From:"+$("#fromDate").val()+" To:"+$("#toDate").val();
+	
+	var msgTop1 = "Total Transaction made is "+$(response1).length + ". Total Transaction Amount is: "+totalAmount+" Rs."+perShare1+fromto ;	
+	
+	  doc = new jsPDF('1', 'pt','a4');
+	  var res = doc.autoTableHtmlToJson(document.getElementById('moneyCalcTable'));
+	  doc.setFontSize(15);
+	  doc.text(40,40, $("#serviceArea").html()+" Service");
+	  doc.setFontSize(9);
+	  doc.setTextColor(255, 0, 0);
+	  doc.text(40,60, msgTop1);
+	  
+	  doc.autoTable(res.columns, res.data, {
+		    startY: false,
+			 margin: { top: 70 },
+			 theme: 'grid',
+			 tableWidth: 'auto',
+			 columnWidth: 'wrap',
+			 showHeader: 'everyPage',
+			 tableLineColor: 200,
+			 tableLineWidth: 0,
+			 columnStyles: {
+				 0: {
+					 columnWidth: 30
+				 },
+				 1: {
+					 columnWidth: 125
+				 },
+				 2: {
+					 columnWidth: 136
+				 },
+				 3: {
+					 columnWidth: 250
+				 }
+			 },
+			 headerStyles: {
+				 theme: 'grid'
+			 },
+			 styles: {
+				 overflow: 'linebreak',
+				 columnWidth: 'wrap',
+				 font: 'arial',
+				 fontSize: 10,
+				 cellPadding: 8,
+				 overflowColumns: 'linebreak'
+			 },
+	  });
+	 
+}
+
+function exportPDF(){
+	 doc.save(typeName+'Billing.pdf');	
+}
