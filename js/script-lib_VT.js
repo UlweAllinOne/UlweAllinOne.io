@@ -122,6 +122,7 @@ function initCart(){
 	map = JSON.parse(localStorage.getItem(myCurrentReq+"mymap"));
 	displayCardDetails();
 	mainTotal();
+	checkPreviousCartValue();
 }
 
 function displayCardDetails(){
@@ -334,6 +335,30 @@ function placeOrder(){
 
 			});
 		}
+	saveCardDetails();	
+}
+
+function saveCardDetails(){
+	 var map = {};
+	 map["fname"]=$("#fname").val();
+	 map["lname"]=$("#lname").val();
+	 map["sector"]=$("#sector").val();
+	 map["streetAddress"]=$("#streetAddress").val();
+	 map["apartment"]=$("#apartment").val();
+	 map["city"]=$("#city").val();
+	 map["pincode"]=$("#pincode").val();
+	 map["mobileNo"]=$("#mobileNo").val();
+	 map["emailid"]=$("#emailid").val();
+	 localStorage.setItem("mycarddetails",JSON.stringify(map));
+}
+
+function checkPreviousCartValue(){
+	var cartValues = JSON.parse(localStorage.getItem("mycarddetails"));
+	if(cartValues != null){
+		jQuery.each(cartValues, function(key,value) {
+			  $("#"+key).val(value);
+			});		
+	}	
 }
 
 function initMasterRates(){
@@ -817,7 +842,6 @@ function showMoneyTable(response1){
 	var msgTop = "Total Transaction made is "+$(response1).length + ". Total Transaction Amount is: <b>"+totalAmount+" Rs</b>."+perShare+exportPDF ;	
 	$("#moneySummaryTable").html("<div class='col-md-12'>"+msgTop+"</div>");
 	var fromto = "From:"+$("#fromDate").val()+" To:"+$("#toDate").val();
-	
 	var msgTop1 = "Total Transaction made is "+$(response1).length + ". Total Transaction Amount is: "+totalAmount+" Rs."+perShare1+fromto ;	
 	
 	  doc = new jsPDF('1', 'pt','a4');
