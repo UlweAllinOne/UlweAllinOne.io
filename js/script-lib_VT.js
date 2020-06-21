@@ -893,3 +893,80 @@ function showMoneyTable(response1){
 function exportPDF(){
 	 doc.save(typeName+'Billing.pdf');	
 }
+
+function checkPassCustNotifcation(){
+	$('#lodaingModal').modal('show');
+			var data = '{"password":"'+$("#password").val()+'"}';
+			$.ajax({
+			  type: 'POST',
+			  url: contextCommon + "checkPassword",
+			  data : data,
+			  success: function (response) { 
+					setTimeout(hidePopup, 500);
+					$(".notificationDetails").show();
+					},
+			  error : function (response) { 
+					setTimeout(hidePopup, 500);				
+					alert("Invalid Password");
+					
+					}
+
+			});
+		}
+function sendNotificationToAllCust(){
+	var r = confirm("Are you sure you want to send Notification to all Customer?");
+		if (r == true) {
+			$('#lodaingModal').modal('show');
+			var map={};
+			map["msgToSend"]=$("#msgToSend").val();
+			map["password"]=$("#password").val();
+			
+			$.ajax({
+			  type: 'POST',
+			  url: contextCommon + "sendSMSAllCust",
+			  data : JSON.stringify(map),
+			  success: function (response) { 
+					setTimeout(hidePopup, 500);
+					//$("#moneyCalcForm").show();
+					alert(response);
+					},
+			  error : function (response) { 
+					setTimeout(hidePopup, 500);				
+					alert(response.responseJSON);
+					
+					}
+
+			});
+			
+			
+		}
+}	
+
+function sendNotificationToSpecificCust(){
+	var r = confirm("Are you sure you want to send Notification to Specific Customer?");
+		if (r == true) {
+			$('#lodaingModal').modal('show');
+			var map={};
+			map["msgToSend"]=$("#msgToSendspeficCust").val();
+			map["password"]=$("#password").val();
+			map["mobileNoList"]=$("#mobileNoList").val();			
+			$.ajax({
+			  type: 'POST',
+			  url: contextCommon + "sendSMSCustomCust",
+			  data : JSON.stringify(map),
+			  success: function (response) { 
+					setTimeout(hidePopup, 500);
+					//$("#moneyCalcForm").show();
+					alert(response);
+					},
+			  error : function (response) { 
+					setTimeout(hidePopup, 500);				
+					alert(response.responseJSON);
+					
+					}
+
+			});
+			
+			
+		}
+}	
