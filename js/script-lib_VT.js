@@ -1005,7 +1005,7 @@ function alertPopUpAdd(){
 	$('body').append(alertStr);
 }
 function confirmAddOkCancel(){
-	var str = '<button type="button" onClick="return confirmPayment()" class="btn btn-primary">Confirm Payment</button><button type="button" onClick="return hideConfirmPopUp()" class="btn btn-primary">Cancel</button>';
+	var str = '<button type="button" onClick="return confirmPayment()" class="btn btn-primary">Confirm Order</button><button type="button" onClick="return hideConfirmPopUp()" class="btn btn-primary">Cancel</button>';
 	$("#lodaingModal").find(".modal-footer").html(str);
 }
 
