@@ -216,7 +216,8 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script>
 	  if(window.location.search == '?appview'){
-		sessionStorage.setItem('appview','true');  
+		sessionStorage.setItem('appview','true'); 
+			console.log('Android app view')
 	  }
 	  if(sessionStorage.getItem('appview') == 'true'){
 		$(".playStoreIcon").hide();
