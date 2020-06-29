@@ -320,6 +320,7 @@ function placeOrder(){
 }
 
 function confirmPayment(){	
+	$("#orderConfirmationContent").html("Order in Process. Please Wait...");
 	$("#lodaingModal").find(".modal-footer").html('');
 	var array = {};
 	array["userName"]=$("#fname").val() + " "+$("#lname").val();
