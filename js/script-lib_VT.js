@@ -459,7 +459,7 @@ function displayProfilePopUp(response){
 	$("#discFormula").val($(response).attr('discFormula'));
 	$("#discountDesc").val($(response).attr('discountDesc'));
 	$("#orderDeliverTime").val($(response).attr('orderDeliverTime'));
-	$("#vendorpassword").val($(response).attr('vendorPassword'));
+	$("#vendorpassword").val($(response).attr('password'));
 	$("#envMode").val($(response).attr('envMode'));
 	$("#idval").val($(response).attr('id'));
 	$("#offerNote").val($(response).attr('offerNote'));
