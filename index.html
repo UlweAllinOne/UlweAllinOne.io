@@ -5,11 +5,6 @@
     <meta charset="utf-8">
 	<link rel="shortcut icon" href="img/logo.gif" type="image/x-icon">
 	 <script src="js/jquery.min.js"></script>
-	 <script>
-	  if(window.location.search == '?appview'){
-		sessionStorage.setItem('appview','true');  
-	  } 
-	</script>
 	 <script id="myscriptLib" myCustomAttrib="common"  src="js/script-lib.js"></script>
  	 <script>
 		getOfferAll();
@@ -219,6 +214,14 @@
       
    
 	<script src="js/bootstrap.min.js"></script>
+	<script>
+	  if(window.location.search == '?appview'){
+		sessionStorage.setItem('appview','true');  
+	  }
+	  if(sessionStorage.getItem('appview') == 'true'){
+		$(".playStoreIcon").hide();
+	  }
+  </script>
 	
   </body>
 </html>
