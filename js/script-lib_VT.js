@@ -167,7 +167,11 @@ function checkQty(obj){
 		if(! ($(obj).val() > 0 && $(obj).val() < 100)){
 			$(obj).val('1')
 		}
-	}else{
+	}
+}
+
+function checkQtyStatus(obj){
+	if($(obj).val().trim() == ""){
 		$(obj).val('1');
 	}
 }
@@ -214,7 +218,7 @@ function generateProduct(){
 		}
 		var outOfStock
 		if(displayComp == "Y" ){
-			outOfStock='<br><span> Quantity <input type="number" id="qtyID'+key+'" value="1" min="1" max="99" onKeyup="return checkQty(this)" size="4" style="margin-bottom: 6px;text-align: center;"></span><input type="button" onClick="return addtoCard('+key+',this)" class="btn btn-primary" value="Add to Cart">';
+			outOfStock='<br><span> Quantity <input type="number" id="qtyID'+key+'" value="1" min="1" max="99" onblur="return checkQtyStatus(this)" onKeyup="return checkQty(this)" size="4" style="margin-bottom: 6px;text-align: center;"></span><input type="button" onClick="return addtoCard('+key+',this)" class="btn btn-primary" value="Add to Cart">';
 		}else{
 			outOfStock='<br><span class="btn btn-danger">Out of Stock</span>';
 		}
