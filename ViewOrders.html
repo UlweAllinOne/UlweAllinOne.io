@@ -153,13 +153,18 @@
 <script id="myscriptLib" myCustomAttrib="common"  src="js/script-lib.js"></script>
    <script type="text/javascript">
 	$("#ordersection").hide();
-   function checkSpcialChar(event){
+	function checkSpcialChar(event){
 	   if(!((event.keyCode >= 64) && (event.keyCode <= 90) || (event.keyCode >= 32) && (event.keyCode <= 32) || (event.keyCode >= 95) && (event.keyCode <= 122) || (event.keyCode >= 44) && (event.keyCode <= 57))){
           event.returnValue = false;
           return;
        }
        event.returnValue = true;
     }
+	var orderid = window.location.search;
+	if(orderid != ''){
+		$("#Orderid").val(orderid.substr(1));
+		submitViewOrder();
+	  } 
  </script>
    
   </body>
