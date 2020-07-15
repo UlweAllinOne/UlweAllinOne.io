@@ -44,54 +44,7 @@
 	</div>
 
 	
-	<script src="js/jquery-3.2.1.min.js"></script>
-	
-	<script>
+	<script src="js/jquery.min.js"></script>
 
-function submitNewBusinessDetails(obj){
-if($("#Name").val() == '' ){
-  alert('Please enter your Name.');
-  $("#Name").focus()
-  return false;
-  }
-if($("#phoneNO").val() == '' ){
-  alert('Please enter Mobile Number.');
-$("#phoneNO").focus()
-  return false;
-  }
-if($("#message").val() == '' ){
-  alert('Please enter Message.');
-  $("#message").focus()
-  return false;
-  }
-
-   var r = confirm("Are you sure you want to Sign up now for Online Business?");
-if (r == true) {
-$(obj).attr('disabled',true);
-$(obj).attr('value','Please wait ...');
-var array = {};
-array["emailId"]=$("#email").val();
-array["shopBusinessName"]=$("#ShopName").val();
-array["productDetails"]=$("#ProductDetails").val();
-array["name"]=$("#Name").val();
-array["mobileNo"]=$("#phoneNO").val();
-array["messageDetails"]=$("#message").val();
-array["kdetails"]="";
-$.ajax({
- type: 'POST',
- url: "https://ih9g38lyi7.execute-api.ap-south-1.amazonaws.com/dev/common/saveSignUpInfo",
- data:JSON.stringify(array),
- success: function (response) {
-alert('Thank you for your Registration. We will contact you soon')
-location.reload();
-},
- error : function (response) {
-alert("Error while Registration");
-location.reload();
-}
-});
-}
-} 
-	</script>
 </body>
 </html>
