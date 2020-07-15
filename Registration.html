@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RatlamAllinOne</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="css/nunito-font.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="css/Registerstyle.css"/>
+</head>
+<body class="form-v6">
+	<div class="page-content">
+		<div class="form-v6-content">
+			<div class="form-left">
+				<img src="img/RatlamAllinOne.png" alt="form">
+			</div>
+			<form class="form-detail" action="#" method="post">
+				<h2>Registration Form</h2>
+				<div class="form-row">
+					<input type="text" name="full-name" id="Name" class="input-text" placeholder="Your Name" required>
+				</div>
+				<div class="form-row">
+					<input type="text" name="phoneNO" id="phoneNO" maxlength=10 class="input-text" placeholder="Your Mobile Number" required>
+				</div>
+				<div class="form-row">
+					<input type="text" name="email" id="email" class="input-text" placeholder="Email Address" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+				</div>
+				<div class="form-row">
+					<input type="text" name="ShopName" id="ShopName" class="input-text" placeholder="Your Shop Name / Business Name  " required>
+				</div>
+				<div class="form-row">
+					<input type="text" name="ProductDetails" id="ProductDetails" class="input-text" placeholder="Product Details" required>
+				</div>
+				<div class="form-row">
+					<textarea name="message" id="message" class="input-text" maxlength=1000  rows="4" cols="50" style="margin-bottom: 10px;  font-weight: bold" placeholder="Type your message here...." required></textarea>
+				</div>
+				<div class="form-row-last">
+					<input type="button" name="register" class="register" onclick="return submitNewBusinessDetails(this)" value="Register">
+				</div>
+			</form>
+		</div>
+	</div>
+
+	
+	<script src="js/jquery-3.2.1.min.js"></script>
+	
+	<script>
+
+function submitNewBusinessDetails(obj){
+if($("#Name").val() == '' ){
+  alert('Please enter your Name.');
+  $("#Name").focus()
+  return false;
+  }
+if($("#phoneNO").val() == '' ){
+  alert('Please enter Mobile Number.');
+$("#phoneNO").focus()
+  return false;
+  }
+if($("#message").val() == '' ){
+  alert('Please enter Message.');
+  $("#message").focus()
+  return false;
+  }
+
+   var r = confirm("Are you sure you want to Sign up now for Online Business?");
+if (r == true) {
+$(obj).attr('disabled',true);
+$(obj).attr('value','Please wait ...');
+var array = {};
+array["emailId"]=$("#email").val();
+array["shopBusinessName"]=$("#ShopName").val();
+array["productDetails"]=$("#ProductDetails").val();
+array["name"]=$("#Name").val();
+array["mobileNo"]=$("#phoneNO").val();
+array["messageDetails"]=$("#message").val();
+array["kdetails"]="";
+$.ajax({
+ type: 'POST',
+ url: "https://ih9g38lyi7.execute-api.ap-south-1.amazonaws.com/dev/common/saveSignUpInfo",
+ data:JSON.stringify(array),
+ success: function (response) {
+alert('Thank you for your Registration. We will contact you soon')
+location.reload();
+},
+ error : function (response) {
+alert("Error while Registration");
+location.reload();
+}
+});
+}
+} 
+	</script>
+</body>
+</html>
