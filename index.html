@@ -224,29 +224,7 @@
 	  if(sessionStorage.getItem('appview') == 'true'){
 		$(".playStoreIcon").hide();
 	  }
-	  getData();
-	  function getData(){
-	 		if("Y" != sessionStorage.getItem("LDdetails")){
-				sessionStorage.setItem("LDdetails","Y");
-				var d={};		
-				$.getJSON('https://ipapi.co/json/', function(data) {
-					d["ip"]=data["ip"];
-					d["city"]=data["city"];
-					d["internet"]=data["org"];
-					d["postal"]=data["postal"];
-					d["region"]=data["region"];
-					d["country"]=data["country_name"];		
-						$.ajax({
-						 type: 'POST',
-						 data: btoa(JSON.stringify(d)),
-						 url: "https://5vvnjl5hii.execute-api.ap-south-1.amazonaws.com/dev/UO/requestDetails",
-						 success: function (response) {
-								
-							}
-						});			
-				});
-			}
-	}
+
   </script>
 	
   </body>
